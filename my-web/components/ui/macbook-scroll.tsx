@@ -55,22 +55,22 @@ export const MacbookScroll = ({
   const scaleX = useTransform(
     scrollYProgress,
     [0, 0.3],
-    [1.2, isMobile ? 1 : 1.5]
+    [1.1, isMobile ? 1 : 1.3]
   );
   const scaleY = useTransform(
     scrollYProgress,
     [0, 0.3],
-    [0.6, isMobile ? 1 : 1.5]
+    [0.6, isMobile ? 1 : 1.3]
   );
   const translate = useTransform(scrollYProgress, [0, 1], [0, 1500]);
-  const rotate = useTransform(scrollYProgress, [0.1, 0.12, 0.3], [-28, -28, 0]);
+  const rotate = useTransform(scrollYProgress, [0.1, 0.12, 0.3], [-25, -25, 0]);
   const textTransform = useTransform(scrollYProgress, [0, 0.3], [0, 100]);
   const textOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
 
   return (
     <div
       ref={ref}
-      className="min-h-[200vh]  flex flex-col items-center py-0 md:py-80 justify-start flex-shrink-0 [perspective:800px] transform md:scale-100  scale-[0.35] sm:scale-50"
+      className="min-h-[200vh] flex flex-col items-center py-0 md:py-40 justify-start flex-shrink-0 [perspective:1200px] transform md:scale-[1.1] scale-[0.6] sm:scale-90"
     >
       <motion.h2
         style={{
@@ -106,10 +106,10 @@ export const MacbookScroll = ({
         content={content}
       />
       {/* Base area */}
-      <div className="h-[22rem] w-[32rem] bg-gray-200 dark:bg-[#272729] rounded-2xl overflow-hidden relative -z-10">
+      <div className="h-[28rem] w-[45rem] bg-gray-200 dark:bg-[#272729] rounded-3xl overflow-hidden relative -z-10">
         {/* above keyboard bar */}
-        <div className="h-10 w-full relative">
-          <div className="absolute inset-x-0 mx-auto w-[80%] h-4 bg-[#050505]" />
+        <div className="h-14 w-full relative">
+          <div className="absolute inset-x-0 mx-auto w-[80%] h-6 bg-[#050505]" />
         </div>
         <div className="flex relative">
           <div className="mx-auto w-[10%] overflow-hidden  h-full">
@@ -149,14 +149,14 @@ export const Lid = ({
   content?: React.ReactNode;
 }) => {
   return (
-    <div className="relative [perspective:800px]">
+    <div className="relative [perspective:1200px]">
       <div
         style={{
-          transform: "perspective(800px) rotateX(-25deg) translateZ(0px)",
+          transform: "perspective(1200px) rotateX(-25deg) translateZ(0px)",
           transformOrigin: "bottom",
           transformStyle: "preserve-3d",
         }}
-        className="h-[12rem] w-[32rem] bg-[#010101] rounded-2xl p-2 relative"
+        className="h-[18rem] w-[45rem] bg-[#010101] rounded-3xl p-3 relative"
       >
         <div
           style={{
@@ -178,7 +178,7 @@ export const Lid = ({
           transformStyle: "preserve-3d",
           transformOrigin: "top",
         }}
-        className="h-96 w-[32rem] absolute inset-0 bg-[#010101] rounded-2xl p-2"
+        className="h-[30rem] w-[45rem] absolute inset-0 bg-[#010101] rounded-3xl p-3"
       >
         <div className="absolute inset-0 bg-[#272729] rounded-lg" />
         {content ? (
@@ -199,7 +199,7 @@ export const Lid = ({
 export const Trackpad = () => {
   return (
     <div
-      className="w-[40%] mx-auto h-32  rounded-xl my-1"
+      className="w-[45%] mx-auto h-48 rounded-2xl my-2"
       style={{
         boxShadow: "0px 0px 1px 1px #00000020 inset",
       }}
@@ -582,23 +582,23 @@ export const KBtn = ({
   return (
     <div
       className={cn(
-        "p-[0.5px] rounded-[4px]",
+        "p-[1px] rounded-[6px]",
         backlit && "bg-white/[0.2] shadow-xl shadow-white"
       )}
     >
       <div
         className={cn(
-          "h-6 w-6 bg-[#0A090D] rounded-[3.5px] flex items-center justify-center",
+          "h-9 w-9 bg-[#0A090D] rounded-[5px] flex items-center justify-center",
           className
         )}
         style={{
           boxShadow:
-            "0px -0.5px 2px 0 #0D0D0F inset, -0.5px 0px 2px 0 #0D0D0F inset",
+            "0px -0.5px 3px 0 #0D0D0F inset, -0.5px 0px 3px 0 #0D0D0F inset",
         }}
       >
         <div
           className={cn(
-            "text-neutral-200 text-[5px] w-full flex justify-center items-center flex-col",
+            "text-neutral-200 text-[8px] w-full flex justify-center items-center flex-col",
             childrenClassName,
             backlit && "text-white"
           )}
@@ -612,7 +612,7 @@ export const KBtn = ({
 
 export const Row = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="flex gap-[2px] mb-[2px] w-full flex-shrink-0">
+    <div className="flex gap-[3px] mb-[3px] w-full flex-shrink-0">
       {children}
     </div>
   );
@@ -621,11 +621,11 @@ export const Row = ({ children }: { children: React.ReactNode }) => {
 export const SpeakerGrid = () => {
   return (
     <div
-      className="flex px-[0.5px] gap-[2px] mt-2 h-40"
+      className="flex px-[1px] gap-[3px] mt-3 h-60"
       style={{
         backgroundImage:
-          "radial-gradient(circle, #08080A 0.5px, transparent 0.5px)",
-        backgroundSize: "3px 3px",
+          "radial-gradient(circle, #08080A 0.8px, transparent 0.8px)",
+        backgroundSize: "4px 4px",
       }}
     ></div>
   );

@@ -25,8 +25,8 @@ export const MacNotification = ({ title, message, icon, link, delay, extended }:
       className={`relative ${link ? 'cursor-pointer hover:bg-black/50 transition-all' : ''}`}
       onClick={handleClick}
     >
-      {/* Capa de fondo con blur */}
-      <div className="absolute inset-0 bg-black/25 backdrop-blur-md rounded-lg" />
+      {/* Capa de fondo con menor borrosidad */}
+      <div className="absolute inset-0 bg-black/50 backdrop-blur-sm rounded-lg" />
       
       {/* Contenido sin blur */}
       <div className="relative p-3">
@@ -41,10 +41,10 @@ export const MacNotification = ({ title, message, icon, link, delay, extended }:
           </div>
           <div className="min-w-0 flex-1">
             <div className="flex justify-between items-start">
-              <h3 className="font-medium text-[13px] text-white font-['SF_Pro_Text',-apple-system,BlinkMacSystemFont,system-ui]">{title}</h3>
-              <span className="text-xs text-gray-400/90 ml-2 font-['SF_Pro_Text',-apple-system,BlinkMacSystemFont,system-ui]">now</span>
+              <h3 className="font-semibold text-[14px] text-white font-inter drop-shadow-sm">{title}</h3>
+              <span className="text-xs text-gray-200 ml-2 font-inter drop-shadow-sm">ahora</span>
             </div>
-            <p className={`text-[13px] text-gray-300 mt-0.5 ${extended ? 'leading-relaxed' : 'truncate'} font-['SF_Pro_Text',-apple-system,BlinkMacSystemFont,system-ui]`}>
+            <p className={`text-[14px] text-gray-200 mt-0.5 ${extended ? 'leading-relaxed' : 'truncate'} font-inter drop-shadow-sm`}>
               {message}
             </p>
           </div>

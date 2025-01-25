@@ -30,11 +30,13 @@ export const MacbookScroll = ({
   showGradient,
   title,
   badge,
+  content,
 }: {
   src?: string;
   showGradient?: boolean;
   title?: string | React.ReactNode;
   badge?: React.ReactNode;
+  content?: React.ReactNode;
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -101,6 +103,7 @@ export const MacbookScroll = ({
         scaleY={scaleY}
         rotate={rotate}
         translate={translate}
+        content={content}
       />
       {/* Base area */}
       <div className="h-[22rem] w-[32rem] bg-gray-200 dark:bg-[#272729] rounded-2xl overflow-hidden relative -z-10">
@@ -136,12 +139,14 @@ export const Lid = ({
   rotate,
   translate,
   src,
+  content,
 }: {
   scaleX: MotionValue<number>;
   scaleY: MotionValue<number>;
   rotate: MotionValue<number>;
   translate: MotionValue<number>;
   src?: string;
+  content?: React.ReactNode;
 }) => {
   return (
     <div className="relative [perspective:800px]">
@@ -176,12 +181,16 @@ export const Lid = ({
         className="h-96 w-[32rem] absolute inset-0 bg-[#010101] rounded-2xl p-2"
       >
         <div className="absolute inset-0 bg-[#272729] rounded-lg" />
-        <Image
-          src={src as string}
-          alt="aceternity logo"
-          fill
-          className="object-cover object-left-top absolute rounded-lg inset-0 h-full w-full"
-        />
+        {content ? (
+          content
+        ) : (
+          <Image
+            src={src as string}
+            alt="aceternity logo"
+            fill
+            className="object-cover object-left-top absolute rounded-lg inset-0 h-full w-full"
+          />
+        )}
       </motion.div>
     </div>
   );

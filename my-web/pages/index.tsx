@@ -19,7 +19,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.5 }}
             >
-              Hi, I'm Luca Alonso
+              Hi, I&apos;m Luca Alonso
             </motion.span>
             <motion.span 
               className="text-gray-400 text-3xl md:text-4xl mt-4 block"
@@ -59,7 +59,7 @@ export default function Home() {
             </div>
             
             {/* Contenedor de notificaciones */}
-            <div className="absolute top-32 right-1/2 transform translate-x-1/2 space-y-1.5 w-[300px]">
+            <div className="absolute top-32 right-1/2 transform translate-x-1/2 space-y-2 w-[450px]">
               <MacNotification
                 title="Luca Alonso Froeling"
                 message="Second-year Computer Science student and Software Developer with professional experience. Passionate about creating innovative solutions and constantly learning new technologies."

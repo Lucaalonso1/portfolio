@@ -71,14 +71,14 @@ export default function Home() {
                 title="GitHub"
                 message="Check out my projects on GitHub"
                 icon="/github-icon.png"
-                link="https://github.com/yourusername"
+                link="https://github.com/Lucaalonso1"
                 delay={1.5}
               />
               <MacNotification
                 title="LinkedIn"
                 message="Connect with me on LinkedIn"
                 icon="/linkedin-icon.png"
-                link="https://linkedin.com/in/yourusername"
+                link="https://www.linkedin.com/in/luca-alonso-froeling-64a6a2306/"
                 delay={2.5}
               />
             </div>

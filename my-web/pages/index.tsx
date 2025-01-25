@@ -42,34 +42,44 @@ export default function Home() {
               </div>
             </div>
             
+            {/* Reloj y fecha */}
+            <div className="absolute top-10 left-1/2 transform -translate-x-1/2 text-center text-white">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <div className="text-xs font-light mb-1">
+                  {new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
+                </div>
+                <div className="text-4xl font-semibold tracking-tight">
+                  {new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false })}
+                </div>
+              </motion.div>
+            </div>
+            
             {/* Contenedor de notificaciones */}
-            <div className="absolute top-10 right-4 space-y-3 w-72">
+            <div className="absolute top-32 right-1/2 transform translate-x-1/2 space-y-1.5 w-[300px]">
               <MacNotification
-                title="Portfolio Highlight"
-                message="Full-stack developer specialized in React & Node.js"
-                icon="/code-icon.png"
+                title="Luca Alonso Froeling"
+                message="Second-year Computer Science student and Software Developer with professional experience. Passionate about creating innovative solutions and constantly learning new technologies."
+                icon="/profile-icon.png"
                 delay={0.5}
+                extended={true}
               />
               <MacNotification
                 title="GitHub"
-                message="View my latest projects and contributions"
+                message="Check out my projects on GitHub"
                 icon="/github-icon.png"
                 link="https://github.com/yourusername"
                 delay={1.5}
               />
               <MacNotification
                 title="LinkedIn"
-                message="Connect with me professionally"
+                message="Connect with me on LinkedIn"
                 icon="/linkedin-icon.png"
                 link="https://linkedin.com/in/yourusername"
                 delay={2.5}
-              />
-              <MacNotification
-                title="Contact"
-                message="Open to new opportunities!"
-                icon="/email-icon.png"
-                link="mailto:your@email.com"
-                delay={3.5}
               />
             </div>
           </div>

@@ -2,6 +2,7 @@ import React from "react";
 import { MacbookScroll } from "@/components/ui/macbook-scroll";
 import { motion } from "framer-motion";
 import { MacNotification } from "@/components/MacNotification";
+import { FlipWords } from "@/components/ui/flip-words";
 
 export default function Home() {
   return (
@@ -21,14 +22,26 @@ export default function Home() {
             >
               Hi, I&apos;m Luca Alonso
             </motion.span>
-            <motion.span 
-              className="text-gray-400 text-3xl md:text-4xl mt-4 block"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.5 }}
-            >
-              Software Engineer
-            </motion.span>
+            <div className="flex items-center justify-center gap-2">
+              <motion.span 
+                className="text-gray-400 text-3xl md:text-4xl mt-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.5 }}
+              >
+                I&apos;m a
+              </motion.span>
+              <FlipWords
+                words={[
+                  "Software Engineer",
+                  "Problem Solver",
+                  "Tech Enthusiast",
+                  "Full-Stack Developer"
+                ]}
+                duration={2000}
+                className="text-gray-400 text-3xl md:text-4xl mt-4"
+              />
+            </div>
           </motion.div>
         }
         content={

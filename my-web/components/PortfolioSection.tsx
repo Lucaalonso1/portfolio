@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import Image from 'next/image';
 
 const PortfolioSection = () => {
   return (
@@ -21,9 +22,11 @@ const PortfolioSection = () => {
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            <img
+            <Image
               src="/proyecto1.jpg"
               alt="Proyecto 1"
+              width={800}
+              height={400}
               className="w-full h-48 object-cover"
             />
             <div className="p-4">
@@ -45,9 +48,11 @@ const PortfolioSection = () => {
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            <img
+            <Image
               src="/proyecto2.jpg"
               alt="Proyecto 2"
+              width={800}
+              height={400}
               className="w-full h-48 object-cover"
             />
             <div className="p-4">
@@ -69,9 +74,11 @@ const PortfolioSection = () => {
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            <img
+            <Image
               src="/proyecto3.jpg"
               alt="Proyecto 3"
+              width={800}
+              height={400}
               className="w-full h-48 object-cover"
             />
             <div className="p-4">

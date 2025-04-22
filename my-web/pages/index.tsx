@@ -3,6 +3,7 @@ import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import { motion } from "framer-motion";
 import { MacNotification } from "@/components/MacNotification";
 import Link from "next/link";
+import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card";
 import { 
   Navbar, 
   NavBody, 
@@ -16,7 +17,6 @@ import {
 
 export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [currentTime, setCurrentTime] = useState("");
   const [currentDate, setCurrentDate] = useState("");
 
@@ -185,7 +185,7 @@ export default function Home() {
       </ContainerScroll>
 
       {/* Projects Section */}
-      <section id="projects" className="py-0 -mt-32 min-h-[80vh]">
+      <section id="projects" className="scroll-mt-20 py-0 min-h-[80vh]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -248,151 +248,84 @@ export default function Home() {
               <motion.div
                 key={index}
                 variants={{
-                  hidden: { 
-                    opacity: 0,
-                    y: 50,
-                    scale: 0.95
-                  },
-                  visible: { 
-                    opacity: 1,
-                    y: 0,
-                    scale: 1,
-                    transition: {
-                      type: "spring",
-                      stiffness: 100,
-                      damping: 20
-                    }
-                  }
+                  hidden: { opacity: 0, y: 50 },
+                  visible: { opacity: 1, y: 0 }
                 }}
-                whileHover={{ y: -10 }}
-                className="relative group"
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
+                className="relative"
               >
-                <Link 
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block h-full transform-gpu"
-                >
-                  <motion.div 
-                    className="group h-[350px] w-full relative overflow-hidden rounded-2xl bg-black/20 backdrop-blur-sm"
-                    initial={{ borderRadius: "1rem" }}
-                    whileHover={{ scale: 1.01 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/80 z-10 opacity-80"
-                      initial={{ opacity: 0.8 }}
-                      whileHover={{ opacity: 0.9 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                    
-                    <motion.div 
-                      className="absolute inset-0 w-full h-full bg-cover bg-center z-0"
-                      initial={{ scale: 1 }}
-                      animate={{ scale: 1 }}
-                      transition={{ duration: 1.5 }}
+                <CardContainer className="inter-var">
+                  <CardBody className="relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border">
+                    <CardItem
+                      translateZ="50"
+                      className="text-3xl font-bold text-white"
                     >
-                      {project.image.endsWith('.mp4') ? (
-                        <video
-                          className="w-full h-full object-cover transform-gpu transition-transform duration-700 ease-out group-hover:scale-[1.02]"
-                          autoPlay
-                          loop
-                          muted
-                          playsInline
+                      {project.title}
+                    </CardItem>
+                    <CardItem
+                      as="p"
+                      translateZ="60"
+                      className="text-neutral-300 text-sm max-w-sm mt-2"
+                    >
+                      {project.description}
+                    </CardItem>
+                    
+                    <div className="flex flex-wrap gap-2 mt-4">
+                      {project.tech.map((tech, idx) => (
+                        <CardItem
+                          key={idx}
+                          translateZ="40"
+                          className="px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-xs text-white"
                         >
-                          <source src={project.image} type="video/mp4" />
-                        </video>
-                      ) : (
-                        <motion.div 
-                          className="w-full h-full bg-cover bg-center transform-gpu transition-transform duration-700 ease-out"
-                          style={{ backgroundImage: `url(${project.image})` }}
-                          whileHover={{ scale: 1.02 }}
-                          transition={{ duration: 0.7 }}
-                        />
-                      )}
-                    </motion.div>
-                    
-                    <motion.div 
-                      className="absolute bottom-0 left-0 right-0 p-6 z-20"
-                      initial={{ y: 20, opacity: 0 }}
-                      whileInView={{ y: 0, opacity: 1 }}
-                      transition={{ duration: 0.5 }}
-                    >
-                      <motion.h3 
-                        className="text-3xl font-bold text-white mb-2"
-                        initial={{ y: 20, opacity: 0 }}
-                        whileInView={{ y: 0, opacity: 1 }}
-                        transition={{ duration: 0.5 }}
-                      >
-                        {project.title}
-                      </motion.h3>
-                      <motion.p 
-                        className="text-gray-300 mb-4"
-                        initial={{ y: 20, opacity: 0 }}
-                        whileInView={{ y: 0, opacity: 1 }}
-                        transition={{ duration: 0.5, delay: 0.1 }}
-                      >
-                        {project.description}
-                      </motion.p>
-                      
-                      <motion.div 
-                        className="flex flex-wrap gap-2 mb-4"
-                        initial={{ y: 20, opacity: 0 }}
-                        whileInView={{ y: 0, opacity: 1 }}
-                        transition={{ duration: 0.5, delay: 0.2 }}
-                      >
-                        {project.tech.map((tech, idx) => (
-                          <motion.span 
-                            key={idx}
-                            className="px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-xs text-white"
-                            whileHover={{ 
-                              scale: 1.05,
-                              backgroundColor: "rgba(255,255,255,0.2)"
-                            }}
-                            transition={{ duration: 0.2 }}
+                          {tech}
+                        </CardItem>
+                      ))}
+                    </div>
+
+                    <CardItem translateZ="30" className="w-full mt-4">
+                      <div className="h-60 w-full relative rounded-xl overflow-hidden">
+                        {project.image.endsWith('.mp4') ? (
+                          <video
+                            className="w-full h-full object-cover"
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
                           >
-                            {tech}
-                          </motion.span>
-                        ))}
-                      </motion.div>
-                      
-                      <motion.button
-                        className="inline-flex items-center px-4 py-2 bg-white text-black rounded-full text-sm font-medium transition-all group"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        transition={{ duration: 0.2 }}
-                        onClick={(e) => e.stopPropagation()}
+                            <source src={project.image} type="video/mp4" />
+                          </video>
+                        ) : (
+                          <div 
+                            className="w-full h-full bg-cover bg-center"
+                            style={{ backgroundImage: `url(${project.image})` }}
+                          />
+                        )}
+                      </div>
+                    </CardItem>
+
+                    <CardItem
+                      translateZ="100"
+                      className="w-full mt-4"
+                    >
+                      <Link
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center w-full px-4 py-2 bg-white text-black rounded-xl text-sm font-bold transition-colors hover:bg-white/90"
                       >
                         Visit Website
-                        <motion.svg 
+                        <svg 
                           className="ml-2 w-4 h-4" 
                           fill="none" 
                           stroke="currentColor" 
                           viewBox="0 0 24 24" 
                           xmlns="http://www.w3.org/2000/svg"
-                          initial={{ x: 0 }}
-                          whileHover={{ x: 3 }}
-                          transition={{ duration: 0.2 }}
                         >
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </motion.svg>
-                      </motion.button>
-                    </motion.div>
-                  </motion.div>
-                </Link>
-                
-                {hoveredIndex === index && (
-                  <motion.div
-                    layoutId="hoverBorder"
-                    className="absolute -inset-px rounded-2xl border-2 border-white/20 pointer-events-none"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                  />
-                )}
+                        </svg>
+                      </Link>
+                    </CardItem>
+                  </CardBody>
+                </CardContainer>
               </motion.div>
             ))}
           </motion.div>

@@ -27,10 +27,6 @@ export default function Home() {
       link: "#projects"
     },
     {
-      name: "About Me",
-      link: "#about"
-    },
-    {
       name: "Skills",
       link: "#skills"
     }

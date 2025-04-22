@@ -33,10 +33,6 @@ export default function Home() {
     {
       name: "Skills",
       link: "#skills"
-    },
-    {
-      name: "Contact",
-      link: "#contact"
     }
   ];
 
@@ -49,7 +45,7 @@ export default function Home() {
           </Link>
           <NavItems items={navItems} />
           <div className="z-20 relative">
-            <NavbarButton href="mailto:luca.alonso2005o@gmail.com" variant="primary">
+            <NavbarButton href="mailto:luca.alonso2005@gmail.com" variant="primary">
               Contact Me
             </NavbarButton>
           </div>
@@ -88,7 +84,7 @@ export default function Home() {
               )
             ))}
             <NavbarButton 
-              href="mailto:tucorreo@ejemplo.com" 
+              href="mailto:luca.alonso2005@gmail.com" 
               className="mt-4 w-full"
               variant="primary"
             >

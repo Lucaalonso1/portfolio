@@ -159,7 +159,7 @@ export default function Home() {
       </ContainerScroll>
 
       {/* Projects Section */}
-      <section id="projects" className="py-16 min-h-[80vh]">
+      <section id="projects" className="py-0 -mt-32 min-h-[80vh]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

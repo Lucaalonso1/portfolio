@@ -44,18 +44,60 @@ export default function Home() {
     }));
   };
 
+  const smoothScroll = (targetPosition: number, startPosition: number, duration: number) => {
+    const distance = targetPosition - startPosition;
+    let startTime: number | null = null;
+    const durationMs = duration;
+
+    const animation = (currentTime: number) => {
+      if (startTime === null) startTime = currentTime;
+      const timeElapsed = currentTime - startTime;
+      const progress = Math.min(timeElapsed / durationMs, 1);
+      
+      const easeInOutCubic = (t: number) => {
+        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      };
+
+      const currentPosition = startPosition + distance * easeInOutCubic(progress);
+      window.scrollTo(0, currentPosition);
+
+      if (timeElapsed < durationMs) {
+        requestAnimationFrame(animation);
+      }
+    };
+
+    requestAnimationFrame(animation);
+  };
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const startPosition = window.pageYOffset;
+      const targetPosition = element.offsetTop - 80; // Ajuste para el navbar
+      smoothScroll(targetPosition, startPosition, 500); // 500ms = 0.5 segundos
+    }
+  };
+
+  const scrollToTop = () => {
+    const startPosition = window.pageYOffset;
+    smoothScroll(0, startPosition, 500); // 500ms = 0.5 segundos
+  };
+
   const navItems = [
     {
       name: "Home",
-      link: "/"
+      link: "/",
+      onClick: scrollToTop
     },
     {
       name: "Projects",
-      link: "#projects"
+      link: "#projects",
+      onClick: () => scrollToSection('projects')
     },
     {
       name: "Skills",
-      link: "#skills"
+      link: "#skills",
+      onClick: () => scrollToSection('skills')
     }
   ];
 
@@ -63,7 +105,10 @@ export default function Home() {
     <div className="overflow-hidden bg-[#0B0B0F] w-full pt-20">
       <Navbar>
         <NavBody>
-          <Link href="/" className="z-20 relative">
+          <Link href="/" className="z-20 relative" onClick={(e) => {
+            e.preventDefault();
+            scrollToTop();
+          }}>
             <span className="font-bold text-white">Luca Alonso</span>
           </Link>
           <NavItems items={navItems} />
@@ -76,7 +121,10 @@ export default function Home() {
 
         <MobileNav>
           <MobileNavHeader>
-            <Link href="/" className="flex items-center">
+            <Link href="/" className="flex items-center" onClick={(e) => {
+              e.preventDefault();
+              scrollToTop();
+            }}>
               <span className="font-bold text-white">Luca Alonso</span>
             </Link>
             <MobileNavToggle 
@@ -87,23 +135,27 @@ export default function Home() {
           <MobileNavMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)}>
             {navItems.map((item, idx) => (
               item.link.startsWith("#") ? (
-                <a 
+                <button 
                   key={`mobile-link-${idx}`}
-                  href={item.link}
-                  className="w-full px-4 py-2 text-white hover:bg-gray-800 rounded-md"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={() => {
+                    if (item.onClick) item.onClick();
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="w-full px-4 py-2 text-white hover:bg-gray-800 rounded-md text-left"
                 >
                   {item.name}
-                </a>
+                </button>
               ) : (
-                <Link 
+                <button 
                   key={`mobile-link-${idx}`}
-                  href={item.link}
-                  className="w-full px-4 py-2 text-white hover:bg-gray-800 rounded-md"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={() => {
+                    if (item.onClick) item.onClick();
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="w-full px-4 py-2 text-white hover:bg-gray-800 rounded-md text-left"
                 >
                   {item.name}
-                </Link>
+                </button>
               )
             ))}
             <NavbarButton 

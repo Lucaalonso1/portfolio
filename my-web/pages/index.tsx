@@ -152,13 +152,13 @@ export default function Home() {
               <div className="text-xs font-light mb-1">
                 {currentDate}
               </div>
-              <div className="text-4xl font-semibold tracking-tight">
+              <div className="text-3xl xs:text-4xl font-semibold tracking-tight">
                 {currentTime}
               </div>
             </motion.div>
           </div>
           
-          <div className="absolute top-32 right-1/2 transform translate-x-1/2 space-y-2 w-[450px]">
+          <div className="absolute top-24 xs:top-28 sm:top-32 right-1/2 transform translate-x-1/2 space-y-1.5 xs:space-y-2 w-full max-w-[450px] px-4 sm:px-0">
             <MacNotification
               title="Luca Alonso Froeling"
               message="Second-year Computer Science student and Software Developer with professional experience. Passionate about creating innovative solutions and constantly learning new technologies."

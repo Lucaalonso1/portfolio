@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import { motion } from "framer-motion";
 import { MacNotification } from "@/components/MacNotification";
@@ -14,11 +14,35 @@ import {
   MobileNavToggle,
   NavbarButton 
 } from "@/components/ui/resizable-navbar";
+import { FaReact, FaNodeJs, FaGitAlt } from 'react-icons/fa';
+import { SiNextdotjs, SiTypescript, SiJavascript, SiTailwindcss, SiExpress, SiMongodb, SiPostgresql, SiFigma, SiVercel, SiFramer, SiGoogleanalytics, SiAdobexd } from 'react-icons/si';
+import { AnimatedRadarSkills } from "@/components/AnimatedRadarSkills";
 
 export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentTime, setCurrentTime] = useState("");
   const [currentDate, setCurrentDate] = useState("");
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const projectsRef = useRef<HTMLElement>(null);
+  const skillsRef = useRef<HTMLElement>(null);
+
+  const skillsData = [
+    { name: 'React', icon: <FaReact size={28} color="#38bdf8" />, level: 95, color: 'from-sky-400 to-blue-500' },
+    { name: 'Next.js', icon: <SiNextdotjs size={28} color="#000" />, level: 90, color: 'from-black to-gray-700' },
+    { name: 'TypeScript', icon: <SiTypescript size={28} color="#2563eb" />, level: 90, color: 'from-blue-500 to-blue-700' },
+    { name: 'JavaScript', icon: <SiJavascript size={28} color="#facc15" />, level: 95, color: 'from-yellow-300 to-yellow-500' },
+    { name: 'Tailwind CSS', icon: <SiTailwindcss size={28} color="#06b6d4" />, level: 90, color: 'from-cyan-400 to-cyan-600' },
+    { name: 'Node.js', icon: <FaNodeJs size={28} color="#16a34a" />, level: 85, color: 'from-green-400 to-green-700' },
+    { name: 'Express', icon: <SiExpress size={28} color="#222" />, level: 80, color: 'from-gray-400 to-gray-700' },
+    { name: 'MongoDB', icon: <SiMongodb size={28} color="#22c55e" />, level: 80, color: 'from-green-300 to-green-600' },
+    { name: 'PostgreSQL', icon: <SiPostgresql size={28} color="#1e40af" />, level: 75, color: 'from-blue-400 to-blue-900' },
+    { name: 'Framer Motion', icon: <SiFramer size={28} color="#d946ef" />, level: 80, color: 'from-fuchsia-400 to-fuchsia-700' },
+    { name: 'Figma', icon: <SiFigma size={28} color="#ec4899" />, level: 85, color: 'from-pink-400 to-pink-700' },
+    { name: 'Git', icon: <FaGitAlt size={28} color="#f97316" />, level: 90, color: 'from-orange-400 to-orange-700' },
+    { name: 'Vercel', icon: <SiVercel size={28} color="#000" />, level: 80, color: 'from-gray-800 to-black' },
+    { name: 'SEO', icon: <SiGoogleanalytics size={28} color="#22c55e" />, level: 70, color: 'from-green-200 to-green-500' },
+    { name: 'UI/UX', icon: <SiAdobexd size={28} color="#a21caf" />, level: 85, color: 'from-purple-400 to-purple-700' },
+  ];
 
   useEffect(() => {
     // Actualizar fecha y hora inicialmente
@@ -27,7 +51,31 @@ export default function Home() {
     // Actualizar cada minuto
     const interval = setInterval(updateDateTime, 60000);
 
-    return () => clearInterval(interval);
+    const handleScroll = () => {
+      if (!projectsRef.current || !skillsRef.current) return;
+
+      const projectsSection = projectsRef.current;
+      const skillsSection = skillsRef.current;
+      const windowHeight = window.innerHeight;
+
+      // Inicio y fin del área de transición (desde el top de proyectos hasta el final de skills)
+      const start = projectsSection.offsetTop - windowHeight;
+      const end = skillsSection.offsetTop + skillsSection.offsetHeight - windowHeight;
+      const scrollY = window.scrollY;
+
+      // Progreso global de la cortina (0 = inicio proyectos, 1 = fin skills)
+      let progress = (scrollY - start) / (end - start);
+      progress = Math.min(Math.max(progress, 0), 1);
+      setScrollProgress(progress);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Calcular el progreso inicial
+
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   const updateDateTime = () => {
@@ -102,7 +150,20 @@ export default function Home() {
   ];
 
   return (
-    <div className="overflow-hidden bg-[#0B0B0F] w-full pt-20">
+    <div className="overflow-hidden w-full pt-20 relative">
+      <div 
+        className="fixed inset-0 transition-opacity duration-300 pointer-events-none"
+        style={{
+          background: scrollProgress >= 1
+            ? 'white'
+            : `linear-gradient(to bottom, 
+                #0B0B0F ${(1 - scrollProgress) * 100}%, 
+                white ${(1 - scrollProgress) * 100}%
+              )`,
+          zIndex: -1
+        }}
+      />
+      
       <Navbar>
         <NavBody>
           <Link href="/" className="z-20 relative" onClick={(e) => {
@@ -141,7 +202,11 @@ export default function Home() {
                     if (item.onClick) item.onClick();
                     setIsMobileMenuOpen(false);
                   }}
-                  className="w-full px-4 py-2 text-white hover:bg-gray-800 rounded-md text-left"
+                  className={`w-full px-4 py-2 transition-colors duration-300 ${
+                    scrollProgress > 0.5 
+                      ? 'text-black hover:bg-gray-100' 
+                      : 'text-white hover:bg-gray-800'
+                  } rounded-md text-left`}
                 >
                   {item.name}
                 </button>
@@ -152,7 +217,11 @@ export default function Home() {
                     if (item.onClick) item.onClick();
                     setIsMobileMenuOpen(false);
                   }}
-                  className="w-full px-4 py-2 text-white hover:bg-gray-800 rounded-md text-left"
+                  className={`w-full px-4 py-2 transition-colors duration-300 ${
+                    scrollProgress > 0.5 
+                      ? 'text-black hover:bg-gray-100' 
+                      : 'text-white hover:bg-gray-800'
+                  } rounded-md text-left`}
                 >
                   {item.name}
                 </button>
@@ -237,7 +306,11 @@ export default function Home() {
       </ContainerScroll>
 
       {/* Projects Section */}
-      <section id="projects" className="scroll-mt-20 py-0 min-h-[80vh]">
+      <section 
+        ref={projectsRef}
+        id="projects" 
+        className="scroll-mt-20 py-0 min-h-[80vh] relative"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -247,7 +320,7 @@ export default function Home() {
             className="text-center mb-10"
           >
             <motion.h2 
-              className="text-4xl md:text-6xl font-bold text-white mb-3"
+              className="text-4xl md:text-6xl font-bold mb-3 text-white"
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{
@@ -259,7 +332,10 @@ export default function Home() {
               My recent work
             </motion.h2>
             <motion.p 
-              className="max-w-2xl mx-auto text-gray-400 text-lg mb-8"
+              className="max-w-2xl mx-auto text-lg mb-8 transition-colors duration-300"
+              style={{
+                color: scrollProgress > 0.5 ? '#4B5563' : '#9CA3AF'
+              }}
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.4 }}
@@ -306,17 +382,17 @@ export default function Home() {
                 className="relative"
               >
                 <CardContainer className="inter-var">
-                  <CardBody className="relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border">
+                  <CardBody className="relative group/card hover:shadow-2xl hover:shadow-emerald-500/[0.1] bg-white border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border">
                     <CardItem
                       translateZ="50"
-                      className="text-3xl font-bold text-white"
+                      className="text-3xl font-bold text-black"
                     >
                       {project.title}
                     </CardItem>
                     <CardItem
                       as="p"
                       translateZ="60"
-                      className="text-neutral-300 text-sm max-w-sm mt-2"
+                      className="text-gray-600 text-sm max-w-sm mt-2"
                     >
                       {project.description}
                     </CardItem>
@@ -326,7 +402,7 @@ export default function Home() {
                         <CardItem
                           key={idx}
                           translateZ="40"
-                          className="px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-xs text-white"
+                          className="px-3 py-1 bg-gray-100 rounded-full text-xs text-black"
                         >
                           {tech}
                         </CardItem>
@@ -362,7 +438,7 @@ export default function Home() {
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center w-full px-4 py-2 bg-white text-black rounded-xl text-sm font-bold transition-colors hover:bg-white/90"
+                        className="inline-flex items-center justify-center w-full px-4 py-2 bg-black text-white rounded-xl text-sm font-bold transition-colors hover:bg-gray-800"
                       >
                         Visit Website
                         <svg 
@@ -384,7 +460,37 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Skills Section (placeholder) */}
+      {/* Skills Section */}
+      <motion.section
+        ref={skillsRef}
+        id="skills"
+        className="py-20 bg-white min-h-[60vh] flex flex-col items-center justify-center"
+        initial={{ opacity: 0, filter: 'blur(12px)' }}
+        whileInView={{ opacity: 1, filter: 'blur(0px)' }}
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+        viewport={{ once: true }}
+      >
+        <div className="w-full max-w-3xl mx-auto px-4 flex flex-col items-center">
+          <motion.h2
+            className="text-4xl md:text-6xl font-bold text-black text-center mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            Skills
+          </motion.h2>
+          <motion.div
+            initial={{ scale: 0.85, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.8, ease: 'backOut' }}
+            viewport={{ once: true }}
+            className="w-full"
+          >
+            <AnimatedRadarSkills skills={skillsData} />
+          </motion.div>
+        </div>
+      </motion.section>
     </div>
   );
 }

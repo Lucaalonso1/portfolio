@@ -21,6 +21,7 @@ interface NavBodyProps {
   children: React.ReactNode;
   className?: string;
   visible?: boolean;
+  isLightHeader?: boolean;
 }
 
 interface NavItemsProps {
@@ -31,6 +32,7 @@ interface NavItemsProps {
   }[];
   className?: string;
   onItemClick?: () => void;
+  isLightHeader?: boolean;
 }
 
 interface MobileNavProps {
@@ -84,7 +86,7 @@ export const Navbar = ({ children, className }: NavbarProps) => {
   );
 };
 
-export const NavBody = ({ children, className, visible }: NavBodyProps) => {
+export const NavBody = ({ children, className, visible, isLightHeader }: NavBodyProps) => {
   return (
     <motion.div
       animate={{
@@ -104,8 +106,10 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
         minWidth: "800px",
       }}
       className={cn(
-        "relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full bg-transparent px-4 py-2 lg:flex dark:bg-transparent",
-        visible && "bg-black/90 dark:bg-black/90",
+        "relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full px-4 py-2 lg:flex transition-colors duration-500",
+        isLightHeader
+          ? "bg-white text-black shadow-lg"
+          : "bg-black text-white shadow-lg",
         className,
       )}
     >
@@ -114,14 +118,15 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
   );
 };
 
-export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
+export const NavItems = ({ items, className, onItemClick, isLightHeader }: NavItemsProps) => {
   const [hovered, setHovered] = useState<number | null>(null);
 
   return (
     <motion.div
       onMouseLeave={() => setHovered(null)}
       className={cn(
-        "absolute inset-0 hidden flex-1 flex-row items-center justify-center space-x-2 text-sm font-medium text-zinc-200 transition duration-200 hover:text-white lg:flex lg:space-x-2",
+        "absolute inset-0 hidden flex-1 flex-row items-center justify-center space-x-2 text-sm font-medium transition-colors duration-500 lg:flex lg:space-x-2",
+        isLightHeader ? "text-black" : "text-zinc-200 hover:text-white",
         className,
       )}
     >
@@ -137,14 +142,14 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
               onItemClick();
             }
           }}
-          className="relative px-4 py-2 text-zinc-100 hover:text-white dark:text-white cursor-pointer"
+          className={`relative px-4 py-2 cursor-pointer transition-colors duration-500 ${isLightHeader ? 'text-black hover:bg-gray-100' : 'text-zinc-100 hover:text-white'}`}
           key={`link-${idx}`}
           href={item.link}
         >
           {hovered === idx && (
             <motion.div
               layoutId="hovered"
-              className="absolute inset-0 h-full w-full rounded-full bg-gray-300/20 dark:bg-white/10"
+              className={`absolute inset-0 h-full w-full rounded-full ${isLightHeader ? 'bg-gray-300/40' : 'bg-gray-300/20 dark:bg-white/10'}`}
             />
           )}
           <span className="relative z-20 font-medium">{item.name}</span>

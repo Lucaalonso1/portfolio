@@ -155,25 +155,26 @@ export default function Home() {
         style={{
           background: scrollProgress >= 1
             ? 'white'
-            : `linear-gradient(to bottom, 
-                #0B0B0F ${(1 - scrollProgress) * 100}%, 
-                white ${(1 - scrollProgress) * 100}%
-              )`,
+            : `linear-gradient(to bottom, #0B0B0F ${(1 - scrollProgress) * 100}%, white ${(1 - scrollProgress) * 100}%)`,
           zIndex: -1
         }}
       />
       
       <Navbar>
-        <NavBody>
-          <Link href="/" className="z-20 relative" onClick={(e) => {
+        <NavBody isLightHeader={scrollProgress > 0.5}>
+          <Link href="/" className={`z-20 relative transition-colors duration-500 ${scrollProgress > 0.5 ? 'text-black' : 'text-white'}`} onClick={(e) => {
             e.preventDefault();
             scrollToTop();
           }}>
-            <span className="font-bold text-white">Luca Alonso</span>
+            <span className={`font-bold transition-colors duration-500 ${scrollProgress > 0.5 ? 'text-black' : 'text-white'}`}>Luca Alonso</span>
           </Link>
-          <NavItems items={navItems} />
+          <NavItems items={navItems} isLightHeader={scrollProgress > 0.5} />
           <div className="z-20 relative">
-            <NavbarButton href="mailto:luca.alonso2005@gmail.com" variant="primary">
+            <NavbarButton 
+              href="mailto:luca.alonso2005@gmail.com" 
+              variant={scrollProgress > 0.5 ? 'dark' : 'primary'}
+              className={`transition-colors duration-500 ${scrollProgress > 0.5 ? '!bg-black !text-white' : ''}`}
+            >
               Contact Me
             </NavbarButton>
           </div>

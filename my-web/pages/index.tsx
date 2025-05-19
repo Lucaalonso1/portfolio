@@ -52,18 +52,17 @@ export default function Home() {
     const interval = setInterval(updateDateTime, 60000);
 
     const handleScroll = () => {
-      if (!projectsRef.current || !skillsRef.current) return;
+      if (!projectsRef.current) return;
 
       const projectsSection = projectsRef.current;
-      const skillsSection = skillsRef.current;
       const windowHeight = window.innerHeight;
 
-      // Inicio y fin del área de transición (desde el top de proyectos hasta el final de skills)
-      const start = projectsSection.offsetTop - windowHeight;
-      const end = skillsSection.offsetTop + skillsSection.offsetHeight - windowHeight;
+      // Ajustamos el inicio de la transición para que comience más temprano
+      const start = windowHeight * 0.5; // Comienza a la mitad de la altura de la ventana
+      const end = projectsSection.offsetTop - windowHeight * 0.2; // Termina antes de llegar a proyectos
       const scrollY = window.scrollY;
 
-      // Progreso global de la cortina (0 = inicio proyectos, 1 = fin skills)
+      // Progreso global de la cortina (0 = inicio temprano, 1 = antes de proyectos)
       let progress = (scrollY - start) / (end - start);
       progress = Math.min(Math.max(progress, 0), 1);
       setScrollProgress(progress);
@@ -320,7 +319,7 @@ export default function Home() {
             className="text-center mb-10"
           >
             <motion.h2 
-              className="text-4xl md:text-6xl font-bold mb-3 text-white"
+              className="text-4xl md:text-6xl font-bold mb-3 text-black"
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{

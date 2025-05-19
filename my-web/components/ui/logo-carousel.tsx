@@ -4,6 +4,7 @@ import React, {
   useState,
 } from "react"
 import { AnimatePresence, motion } from "framer-motion"
+import Image from "next/image"
 
 interface Logo {
   name: string
@@ -91,9 +92,11 @@ const LogoColumn: React.FC<LogoColumnProps> = React.memo(
               },
             }}
           >
-            <img 
+            <Image 
               src={logos[currentIndex].img}
               alt={logos[currentIndex].name}
+              width={128}
+              height={128}
               className="h-20 w-20 max-h-[80%] max-w-[80%] object-contain md:h-32 md:w-32"
             />
           </motion.div>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Navbar, NavBody, NavItems } from "@/components/ui/resizable-navbar";
 import Link from 'next/link';
+import emailjs from '@emailjs/browser';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -18,9 +19,20 @@ export default function Contact() {
     setIsSubmitting(true);
     
     try {
-      // Aquí puedes implementar la lógica para enviar el correo
-      // Por ahora, solo simularemos un envío exitoso
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+      };
+
+      await emailjs.send(
+        'service_45r88ri',
+        'template_9mac6pq',
+        templateParams,
+        'ANZFSwUsZ_7KJ7DAd'
+      );
+
       setSubmitStatus('success');
       setFormData({ name: '', email: '', subject: '', message: '' });
     } catch (err) {

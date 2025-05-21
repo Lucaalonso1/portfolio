@@ -130,6 +130,10 @@ export default function Home() {
     smoothScroll(0, startPosition, 500); // 500ms = 0.5 segundos
   };
 
+  const handleContactMe = () => {
+    window.location.href = '/contact';
+  };
+
   const navItems = [
     {
       name: "Home",
@@ -171,7 +175,7 @@ export default function Home() {
           <NavItems items={navItems} isLightHeader={scrollProgress > 0.5} />
           <div className="z-20 relative">
             <NavbarButton 
-              href="mailto:luca.alonso2005@gmail.com" 
+              onClick={handleContactMe}
               variant={scrollProgress > 0.5 ? 'dark' : 'primary'}
               className={`transition-colors duration-500 ${scrollProgress > 0.5 ? '!bg-black !text-white' : ''}`}
             >
@@ -228,7 +232,7 @@ export default function Home() {
               )
             ))}
             <NavbarButton 
-              href="mailto:luca.alonso2005@gmail.com" 
+              onClick={handleContactMe}
               className="mt-4 w-full"
               variant="primary"
             >

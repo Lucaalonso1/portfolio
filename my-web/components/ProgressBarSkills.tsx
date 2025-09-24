@@ -1,7 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaReact, FaNodeJs, FaGitAlt, FaPython } from 'react-icons/fa';
-import { SiNextdotjs, SiTypescript, SiJavascript, SiTailwindcss, SiExpress, SiMongodb, SiPostgresql, SiFigma, SiVercel, SiFramer, SiGoogleanalytics, SiAdobexd } from 'react-icons/si';
 
 interface Skill {
   name: string;

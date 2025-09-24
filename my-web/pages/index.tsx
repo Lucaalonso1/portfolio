@@ -17,8 +17,16 @@ import {
 import { FaReact, FaNodeJs, FaPython } from 'react-icons/fa';
 import { SiNextdotjs, SiTypescript, SiJavascript, SiTailwindcss, SiMongodb, SiFigma, SiVercel, SiFramer } from 'react-icons/si';
 import { ProgressBarSkills } from "@/components/ProgressBarSkills";
+import { useTranslation } from 'next-i18next';
+import { GetStaticProps } from 'next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import LanguageSelector from "@/components/LanguageSelector";
+import LanguageToggle from "@/components/LanguageToggle";
+import { useLanguage } from "@/hooks/useLanguage";
 
 export default function Home() {
+  const { t } = useTranslation('common');
+  const { showLanguageSelector, hideLanguageSelector } = useLanguage();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentTime, setCurrentTime] = useState("");
   const [currentDate, setCurrentDate] = useState("");
@@ -132,17 +140,17 @@ export default function Home() {
 
   const navItems = [
     {
-      name: "Home",
+      name: t('navigation.home'),
       link: "/",
       onClick: scrollToTop
     },
     {
-      name: "Projects",
+      name: t('navigation.projects'),
       link: "#projects",
       onClick: () => scrollToSection('projects')
     },
     {
-      name: "Skills",
+      name: t('navigation.skills'),
       link: "#skills",
       onClick: () => scrollToSection('skills')
     }
@@ -169,13 +177,14 @@ export default function Home() {
             <span className={`font-bold transition-colors duration-500 ${scrollProgress > 0.5 ? 'text-black' : 'text-white'}`}>Luca Alonso</span>
           </Link>
           <NavItems items={navItems} isLightHeader={scrollProgress > 0.5} />
-          <div className="z-20 relative">
+          <div className="z-20 relative flex items-center space-x-4">
+            <LanguageToggle isLightHeader={scrollProgress > 0.5} />
             <NavbarButton 
               onClick={handleContactMe}
               variant={scrollProgress > 0.5 ? 'dark' : 'primary'}
               className={`transition-colors duration-500 ${scrollProgress > 0.5 ? '!bg-black !text-white' : ''}`}
             >
-              Contact Me
+              {t('navigation.contact')}
             </NavbarButton>
           </div>
         </NavBody>
@@ -228,13 +237,16 @@ export default function Home() {
                 </button>
               )
             ))}
-            <NavbarButton 
-              onClick={handleContactMe}
-              className="mt-4 w-full"
-              variant={scrollProgress > 0.5 ? 'dark' : 'primary'}
-            >
-              Contact Me
-            </NavbarButton>
+            <div className="mt-4 space-y-2">
+              <LanguageToggle isLightHeader={scrollProgress > 0.5} isMobile={true} />
+              <NavbarButton 
+                onClick={handleContactMe}
+                className="w-full"
+                variant={scrollProgress > 0.5 ? 'dark' : 'primary'}
+              >
+                {t('navigation.contact')}
+              </NavbarButton>
+            </div>
           </MobileNavMenu>
         </MobileNav>
       </Navbar>
@@ -245,18 +257,18 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
+            className="text-center"
           >
-            <h1 className="text-4xl font-semibold text-white">
-              Hi, I&apos;m 
-              <br />
-              <span className="text-4xl md:text-[6rem] font-bold mt-1 leading-none">
-                Luca Alonso
-              </span>
+            <h1 className="text-4xl md:text-6xl font-semibold text-white mb-4">
+              {t('hero.greeting')}
             </h1>
+            <h2 className="text-4xl md:text-8xl font-bold text-white leading-none">
+              {t('hero.name')}
+            </h2>
           </motion.div>
         }
       >
-        <div className="relative w-full h-full bg-[url('/wallpaper.jpg')] bg-cover bg-center rounded-[24px]">
+        <div className="relative w-full h-full bg-[url('/wallpaper.jpg')] bg-cover bg-center rounded-[24px] flex items-center justify-center">
           <div className="absolute top-0 w-full h-7 bg-black/20 backdrop-blur-md flex items-center px-4 rounded-t-[24px]">
             <div className="flex space-x-2">
               <div className="w-3 h-3 rounded-full bg-red-500" />
@@ -265,39 +277,39 @@ export default function Home() {
             </div>
           </div>
           
-          <div className="absolute top-10 left-1/2 transform -translate-x-1/2 text-center text-white">
+          <div className="absolute top-20 left-1/2 transform -translate-x-1/2 text-center text-white z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <div className="text-xs font-light mb-1">
+              <div className="text-sm font-light mb-2 text-white/80">
                 {currentDate}
               </div>
-              <div className="text-3xl xs:text-4xl font-semibold tracking-tight">
+              <div className="text-4xl xs:text-5xl font-semibold tracking-tight text-white">
                 {currentTime}
               </div>
             </motion.div>
           </div>
           
-          <div className="absolute top-24 xs:top-28 sm:top-32 right-1/2 transform translate-x-1/2 space-y-1.5 xs:space-y-2 w-full max-w-[450px] px-4 sm:px-0">
+          <div className="absolute top-32 xs:top-36 sm:top-40 right-1/2 transform translate-x-1/2 space-y-1.5 xs:space-y-2 w-full max-w-[450px] px-4 sm:px-0">
             <MacNotification
               title="Luca Alonso Froeling"
-              message="Second-year Computer Science student and Software Developer with professional experience. Passionate about creating innovative solutions and constantly learning new technologies."
+              message={t('hero.description')}
               icon="/profile-icon.png"
               delay={0.5}
               extended={true}
             />
             <MacNotification
-              title="GitHub"
-              message="Check out my projects on GitHub"
+              title={t('hero.github')}
+              message={t('hero.githubMessage')}
               icon="/github-icon.png"
               link="https://github.com/Lucaalonso1"
               delay={1.5}
             />
             <MacNotification
-              title="LinkedIn"
-              message="Connect with me on LinkedIn"
+              title={t('hero.linkedin')}
+              message={t('hero.linkedinMessage')}
               icon="/linkedin-icon.png"
               link="https://www.linkedin.com/in/luca-alonso-froeling-64a6a2306/"
               delay={2.5}
@@ -330,7 +342,7 @@ export default function Home() {
                 stiffness: 100
               }}
             >
-              My recent work
+              {t('projects.title')}
             </motion.h2>
             <motion.p 
               className="max-w-2xl mx-auto text-lg mb-8 transition-colors duration-300"
@@ -341,7 +353,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.4 }}
             >
-              Showcasing my latest web development projects. Each one represents a unique challenge and solution.
+              {t('projects.subtitle')}
             </motion.p>
           </motion.div>
 
@@ -360,15 +372,15 @@ export default function Home() {
           >
             {[
               {
-                title: "7 Indoor Golf",
-                description: "Modern website for an indoor golf facility in Madrid with booking system and responsive design.",
+                title: t('projects.7indoorgolf.title'),
+                description: t('projects.7indoorgolf.description'),
                 tech: ["Next.js", "React", "Tailwind CSS", "Booking API"],
                 image: "/7indoorgolf.mp4",
                 link: "https://7indoorgolf.com/"
               },
               {
-                title: "ETG - Escuela Técnica de Golf",
-                description: "Professional website for a prestigious golf school showcasing their services and facilities.",
+                title: t('projects.etg.title'),
+                description: t('projects.etg.description'),
                 tech: ["React", "Animation", "Responsive Design", "SEO Optimization"],
                 image: "/etg.jpg",
                 link: "https://www.escuelatecnicadegolf.com/"
@@ -441,7 +453,7 @@ export default function Home() {
                         rel="noopener noreferrer"
                         className="inline-flex items-center justify-center w-full px-4 py-2 bg-black text-white rounded-xl text-sm font-bold transition-colors hover:bg-gray-800"
                       >
-                        Visit Website
+                        {t('projects.visitWebsite')}
                         <svg 
                           className="ml-2 w-4 h-4" 
                           fill="none" 
@@ -479,7 +491,7 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            Skills
+            {t('skills.title')}
           </motion.h2>
           <motion.div
             initial={{ scale: 0.85, opacity: 0 }}
@@ -492,6 +504,19 @@ export default function Home() {
           </motion.div>
         </div>
       </motion.section>
+
+      {/* Language Selector */}
+      {showLanguageSelector && (
+        <LanguageSelector onLanguageSelect={hideLanguageSelector} />
+      )}
     </div>
   );
 }
+
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale ?? 'es', ['common'])),
+    },
+  };
+};

@@ -1,0 +1,39 @@
+{
+  "navigation": {
+    "home": "Home",
+    "projects": "Projects",
+    "skills": "Skills",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "name": "Luca Alonso",
+    "description": "Second-year Computer Science student and Software Developer with professional experience. Passionate about creating innovative solutions and constantly learning new technologies.",
+    "github": "GitHub",
+    "githubMessage": "Check out my projects on GitHub",
+    "linkedin": "LinkedIn",
+    "linkedinMessage": "Connect with me on LinkedIn"
+  },
+  "projects": {
+    "title": "My recent work",
+    "subtitle": "Showcasing my latest web development projects. Each one represents a unique challenge and solution.",
+    "visitWebsite": "Visit Website",
+    "7indoorgolf": {
+      "title": "7 Indoor Golf",
+      "description": "Modern website for an indoor golf facility in Madrid with booking system and responsive design."
+    },
+    "etg": {
+      "title": "ETG - Escuela Técnica de Golf",
+      "description": "Professional website for a prestigious golf school showcasing their services and facilities."
+    }
+  },
+  "skills": {
+    "title": "Skills"
+  },
+  "languageSelector": {
+    "title": "Selecciona tu idioma",
+    "subtitle": "Choose your language",
+    "spanish": "Español",
+    "english": "English"
+  }
+}

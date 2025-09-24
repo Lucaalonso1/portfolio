@@ -39,11 +39,13 @@ interface MobileNavProps {
   children: React.ReactNode;
   className?: string;
   visible?: boolean;
+  isLightHeader?: boolean;
 }
 
 interface MobileNavHeaderProps {
   children: React.ReactNode;
   className?: string;
+  isLightHeader?: boolean;
 }
 
 interface MobileNavMenuProps {
@@ -159,7 +161,7 @@ export const NavItems = ({ items, className, onItemClick, isLightHeader }: NavIt
   );
 };
 
-export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
+export const MobileNav = ({ children, className, visible, isLightHeader }: MobileNavProps) => {
   return (
     <motion.div
       animate={{
@@ -180,11 +182,18 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
       }}
       className={cn(
         "relative z-50 mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between bg-transparent px-0 py-2 lg:hidden",
-        visible && "bg-black/90 dark:bg-black/90",
+        visible && (isLightHeader ? "bg-white/90" : "bg-black/90"),
         className,
       )}
     >
-      {children}
+      {React.Children.map(children, (child) =>
+        React.isValidElement(child)
+          ? React.cloneElement(
+              child as React.ReactElement<{ isLightHeader?: boolean }>,
+              { isLightHeader },
+            )
+          : child,
+      )}
     </motion.div>
   );
 };
@@ -192,6 +201,7 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
 export const MobileNavHeader = ({
   children,
   className,
+  isLightHeader,
 }: MobileNavHeaderProps) => {
   return (
     <div
@@ -200,7 +210,14 @@ export const MobileNavHeader = ({
         className,
       )}
     >
-      {children}
+      {React.Children.map(children, (child) =>
+        React.isValidElement(child)
+          ? React.cloneElement(
+              child as React.ReactElement<{ isLightHeader?: boolean }>,
+              { isLightHeader },
+            )
+          : child,
+      )}
     </div>
   );
 };
@@ -232,14 +249,18 @@ export const MobileNavMenu = ({
 export const MobileNavToggle = ({
   isOpen,
   onClick,
+  isLightHeader,
 }: {
   isOpen: boolean;
   onClick: () => void;
+  isLightHeader?: boolean;
 }) => {
+  const iconColor = isLightHeader ? "text-black" : "text-white";
+  
   return isOpen ? (
-    <IconX className="text-black dark:text-white" onClick={onClick} />
+    <IconX className={iconColor} onClick={onClick} />
   ) : (
-    <IconMenu2 className="text-black dark:text-white" onClick={onClick} />
+    <IconMenu2 className={iconColor} onClick={onClick} />
   );
 };
 

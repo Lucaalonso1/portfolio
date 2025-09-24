@@ -184,17 +184,18 @@ export default function Home() {
           </div>
         </NavBody>
 
-        <MobileNav>
-          <MobileNavHeader>
+        <MobileNav isLightHeader={scrollProgress > 0.5}>
+          <MobileNavHeader isLightHeader={scrollProgress > 0.5}>
             <Link href="/" className="flex items-center" onClick={(e) => {
               e.preventDefault();
               scrollToTop();
             }}>
-              <span className="font-bold text-white">Luca Alonso</span>
+              <span className={`font-bold transition-colors duration-500 ${scrollProgress > 0.5 ? 'text-black' : 'text-white'}`}>Luca Alonso</span>
             </Link>
             <MobileNavToggle 
               isOpen={isMobileMenuOpen} 
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} 
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              isLightHeader={scrollProgress > 0.5}
             />
           </MobileNavHeader>
           <MobileNavMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)}>

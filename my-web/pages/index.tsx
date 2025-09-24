@@ -14,9 +14,9 @@ import {
   MobileNavToggle,
   NavbarButton 
 } from "@/components/ui/resizable-navbar";
-import { FaReact, FaNodeJs, FaGitAlt } from 'react-icons/fa';
-import { SiNextdotjs, SiTypescript, SiJavascript, SiTailwindcss, SiExpress, SiMongodb, SiPostgresql, SiFigma, SiVercel, SiFramer, SiGoogleanalytics, SiAdobexd } from 'react-icons/si';
-import { AnimatedRadarSkills } from "@/components/AnimatedRadarSkills";
+import { FaReact, FaNodeJs, FaPython } from 'react-icons/fa';
+import { SiNextdotjs, SiTypescript, SiJavascript, SiTailwindcss, SiMongodb, SiFigma, SiVercel, SiFramer } from 'react-icons/si';
+import { ProgressBarSkills } from "@/components/ProgressBarSkills";
 
 export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -27,21 +27,17 @@ export default function Home() {
   const skillsRef = useRef<HTMLElement>(null);
 
   const skillsData = [
-    { name: 'React', icon: <FaReact size={28} color="#38bdf8" />, level: 95, color: 'from-sky-400 to-blue-500' },
-    { name: 'Next.js', icon: <SiNextdotjs size={28} color="#000" />, level: 90, color: 'from-black to-gray-700' },
-    { name: 'TypeScript', icon: <SiTypescript size={28} color="#2563eb" />, level: 90, color: 'from-blue-500 to-blue-700' },
-    { name: 'JavaScript', icon: <SiJavascript size={28} color="#facc15" />, level: 95, color: 'from-yellow-300 to-yellow-500' },
-    { name: 'Tailwind CSS', icon: <SiTailwindcss size={28} color="#06b6d4" />, level: 90, color: 'from-cyan-400 to-cyan-600' },
-    { name: 'Node.js', icon: <FaNodeJs size={28} color="#16a34a" />, level: 85, color: 'from-green-400 to-green-700' },
-    { name: 'Express', icon: <SiExpress size={28} color="#222" />, level: 80, color: 'from-gray-400 to-gray-700' },
-    { name: 'MongoDB', icon: <SiMongodb size={28} color="#22c55e" />, level: 80, color: 'from-green-300 to-green-600' },
-    { name: 'PostgreSQL', icon: <SiPostgresql size={28} color="#1e40af" />, level: 75, color: 'from-blue-400 to-blue-900' },
-    { name: 'Framer Motion', icon: <SiFramer size={28} color="#d946ef" />, level: 80, color: 'from-fuchsia-400 to-fuchsia-700' },
-    { name: 'Figma', icon: <SiFigma size={28} color="#ec4899" />, level: 85, color: 'from-pink-400 to-pink-700' },
-    { name: 'Git', icon: <FaGitAlt size={28} color="#f97316" />, level: 90, color: 'from-orange-400 to-orange-700' },
-    { name: 'Vercel', icon: <SiVercel size={28} color="#000" />, level: 80, color: 'from-gray-800 to-black' },
-    { name: 'SEO', icon: <SiGoogleanalytics size={28} color="#22c55e" />, level: 70, color: 'from-green-200 to-green-500' },
-    { name: 'UI/UX', icon: <SiAdobexd size={28} color="#a21caf" />, level: 85, color: 'from-purple-400 to-purple-700' },
+    { name: 'Python', icon: <FaPython size={28} color="#3776ab" />, level: 90, color: 'bg-gradient-to-r from-blue-500 to-blue-600' },
+    { name: 'JavaScript', icon: <SiJavascript size={28} color="#facc15" />, level: 95, color: 'bg-gradient-to-r from-yellow-400 to-yellow-500' },
+    { name: 'TypeScript', icon: <SiTypescript size={28} color="#2563eb" />, level: 90, color: 'bg-gradient-to-r from-blue-500 to-blue-700' },
+    { name: 'Next.js', icon: <SiNextdotjs size={28} color="#000" />, level: 90, color: 'bg-gradient-to-r from-gray-800 to-black' },
+    { name: 'React', icon: <FaReact size={28} color="#38bdf8" />, level: 95, color: 'bg-gradient-to-r from-cyan-400 to-blue-500' },
+    { name: 'Tailwind CSS', icon: <SiTailwindcss size={28} color="#06b6d4" />, level: 90, color: 'bg-gradient-to-r from-cyan-400 to-cyan-600' },
+    { name: 'Node.js', icon: <FaNodeJs size={28} color="#16a34a" />, level: 85, color: 'bg-gradient-to-r from-green-500 to-green-700' },
+    { name: 'MongoDB', icon: <SiMongodb size={28} color="#22c55e" />, level: 80, color: 'bg-gradient-to-r from-green-400 to-green-600' },
+    { name: 'Framer Motion', icon: <SiFramer size={28} color="#d946ef" />, level: 80, color: 'bg-gradient-to-r from-fuchsia-500 to-fuchsia-700' },
+    { name: 'Vercel', icon: <SiVercel size={28} color="#000" />, level: 80, color: 'bg-gradient-to-r from-gray-800 to-black' },
+    { name: 'Figma', icon: <SiFigma size={28} color="#ec4899" />, level: 85, color: 'bg-gradient-to-r from-pink-500 to-pink-700' },
   ];
 
   useEffect(() => {
@@ -492,7 +488,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="w-full"
           >
-            <AnimatedRadarSkills skills={skillsData} />
+            <ProgressBarSkills skills={skillsData} />
           </motion.div>
         </div>
       </motion.section>

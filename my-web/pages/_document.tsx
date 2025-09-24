@@ -1,6 +1,13 @@
 import { Html, Head, Main, NextScript } from "next/document";
 import { DocumentProps } from 'next/document';
-const config = require('../next-i18next.config');
+
+const config = {
+  i18n: {
+    defaultLocale: 'es',
+    locales: ['es', 'en'],
+    localeDetection: false,
+  },
+};
 
 interface MyDocumentProps extends DocumentProps {
   locale?: string;

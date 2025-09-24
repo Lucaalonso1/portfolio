@@ -3,8 +3,13 @@ import { motion } from 'framer-motion';
 import { Navbar, NavBody, NavItems } from "@/components/ui/resizable-navbar";
 import Link from 'next/link';
 import emailjs from '@emailjs/browser';
+import LanguageToggle from "@/components/LanguageToggle";
+import { useTranslation } from 'next-i18next';
+import { GetStaticProps } from 'next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 export default function Contact() {
+  const { t } = useTranslation('common');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -52,17 +57,17 @@ export default function Contact() {
 
   const navItems = [
     {
-      name: "Home",
+      name: t('navigation.home'),
       link: "/",
       onClick: () => window.location.href = '/'
     },
     {
-      name: "Projects",
+      name: t('navigation.projects'),
       link: "#projects",
       onClick: () => window.location.href = '/#projects'
     },
     {
-      name: "Skills",
+      name: t('navigation.skills'),
       link: "#skills",
       onClick: () => window.location.href = '/#skills'
     }
@@ -76,6 +81,9 @@ export default function Contact() {
             <span className="font-bold text-black">Luca Alonso</span>
           </Link>
           <NavItems items={navItems} isLightHeader={true} />
+          <div className="z-20 relative flex items-center space-x-4">
+            <LanguageToggle isLightHeader={true} />
+          </div>
         </NavBody>
       </Navbar>
 
@@ -202,4 +210,12 @@ export default function Contact() {
       </div>
     </div>
   );
-} 
+}
+
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale ?? 'es', ['common'])),
+    },
+  };
+}; 

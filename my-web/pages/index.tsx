@@ -20,13 +20,12 @@ import { ProgressBarSkills } from "@/components/ProgressBarSkills";
 import { useTranslation } from 'next-i18next';
 import { GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import LanguageSelector from "@/components/LanguageSelector";
 import LanguageToggle from "@/components/LanguageToggle";
 import { useLanguage } from "@/hooks/useLanguage";
 
 export default function Home() {
   const { t } = useTranslation('common');
-  const { showLanguageSelector, hideLanguageSelector } = useLanguage();
+  useLanguage();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentTime, setCurrentTime] = useState("");
   const [currentDate, setCurrentDate] = useState("");
@@ -505,10 +504,6 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* Language Selector */}
-      {showLanguageSelector && (
-        <LanguageSelector onLanguageSelect={hideLanguageSelector} />
-      )}
     </div>
   );
 }

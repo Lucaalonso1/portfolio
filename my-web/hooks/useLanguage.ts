@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 
 export const useLanguage = () => {
-  const [showLanguageSelector, setShowLanguageSelector] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -12,18 +11,9 @@ export const useLanguage = () => {
     if (preferredLanguage && router.locale !== preferredLanguage) {
       // Si hay un idioma preferido diferente al actual, redirigir
       router.push(router.asPath, router.asPath, { locale: preferredLanguage });
-    } else if (!preferredLanguage) {
-      // Si no hay idioma preferido, mostrar el selector
-      setShowLanguageSelector(true);
     }
+    // Ya no mostramos el selector automáticamente
   }, [router]);
 
-  const hideLanguageSelector = () => {
-    setShowLanguageSelector(false);
-  };
-
-  return {
-    showLanguageSelector,
-    hideLanguageSelector
-  };
+  return {};
 };

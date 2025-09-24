@@ -35,5 +35,23 @@
     "subtitle": "Choose your language",
     "spanish": "Español",
     "english": "English"
+  },
+  "contact": {
+    "title": "Contáctame",
+    "subtitle": "¿Tienes una pregunta o quieres trabajar juntos? ¡Envíame un mensaje!",
+    "form": {
+      "name": "Nombre",
+      "namePlaceholder": "Tu nombre",
+      "email": "Email",
+      "emailPlaceholder": "tu.email@ejemplo.com",
+      "subject": "Asunto",
+      "subjectPlaceholder": "¿De qué se trata?",
+      "message": "Mensaje",
+      "messagePlaceholder": "Escribe tu mensaje aquí...",
+      "submit": "Enviar Mensaje",
+      "submitting": "Enviando...",
+      "success": "¡Mensaje enviado con éxito! Te responderé pronto.",
+      "error": "Hubo un error al enviar tu mensaje. Por favor, inténtalo de nuevo."
+    }
   }
 }

@@ -94,9 +94,9 @@ export default function Contact() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h1 className="text-4xl md:text-6xl font-bold text-black mb-4">Contact Me</h1>
+          <h1 className="text-4xl md:text-6xl font-bold text-black mb-4">{t('contact.title')}</h1>
           <p className="text-gray-600 text-lg">
-            Have a question or want to work together? Send me a message!
+            {t('contact.subtitle')}
           </p>
         </motion.div>
 
@@ -110,7 +110,7 @@ export default function Contact() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                  Name
+                  {t('contact.form.name')}
                 </label>
                 <input
                   type="text"
@@ -120,12 +120,12 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-black"
-                  placeholder="Your name"
+                  placeholder={t('contact.form.namePlaceholder')}
                 />
               </div>
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                  Email
+                  {t('contact.form.email')}
                 </label>
                 <input
                   type="email"
@@ -135,14 +135,14 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-black"
-                  placeholder="your.email@example.com"
+                  placeholder={t('contact.form.emailPlaceholder')}
                 />
               </div>
             </div>
 
             <div>
               <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
-                Subject
+                {t('contact.form.subject')}
               </label>
               <input
                 type="text"
@@ -152,13 +152,13 @@ export default function Contact() {
                 onChange={handleChange}
                 required
                 className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-black"
-                placeholder="What's this about?"
+                placeholder={t('contact.form.subjectPlaceholder')}
               />
             </div>
 
             <div>
               <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                Message
+                {t('contact.form.message')}
               </label>
               <textarea
                 id="message"
@@ -168,7 +168,7 @@ export default function Contact() {
                 required
                 rows={6}
                 className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none text-black"
-                placeholder="Your message here..."
+                placeholder={t('contact.form.messagePlaceholder')}
               />
             </div>
 
@@ -182,7 +182,7 @@ export default function Contact() {
                     : 'bg-black hover:bg-gray-800'
                 }`}
               >
-                {isSubmitting ? 'Sending...' : 'Send Message'}
+                {isSubmitting ? t('contact.form.submitting') : t('contact.form.submit')}
               </button>
             </div>
 
@@ -192,7 +192,7 @@ export default function Contact() {
                 animate={{ opacity: 1, y: 0 }}
                 className="text-green-600 text-center mt-4"
               >
-                Message sent successfully! I&apos;ll get back to you soon.
+                {t('contact.form.success')}
               </motion.div>
             )}
 
@@ -202,7 +202,7 @@ export default function Contact() {
                 animate={{ opacity: 1, y: 0 }}
                 className="text-red-600 text-center mt-4"
               >
-                There was an error sending your message. Please try again.
+                {t('contact.form.error')}
               </motion.div>
             )}
           </form>

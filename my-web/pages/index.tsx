@@ -194,7 +194,7 @@ export default function Home() {
               isLightHeader={scrollProgress > 0.5}
             />
           </MobileNavHeader>
-          <MobileNavMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)}>
+          <MobileNavMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} isLightHeader={scrollProgress > 0.5}>
             {navItems.map((item, idx) => (
               item.link.startsWith("#") ? (
                 <button 
@@ -231,7 +231,7 @@ export default function Home() {
             <NavbarButton 
               onClick={handleContactMe}
               className="mt-4 w-full"
-              variant="primary"
+              variant={scrollProgress > 0.5 ? 'dark' : 'primary'}
             >
               Contact Me
             </NavbarButton>

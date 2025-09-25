@@ -22,6 +22,7 @@ import { GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import LanguageToggle from "@/components/LanguageToggle";
 import { useLanguage } from "@/hooks/useLanguage";
+import InteractiveTerminal from "@/components/InteractiveTerminal";
 
 export default function Home() {
   const { t } = useTranslation('common');
@@ -471,6 +472,46 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+
+      {/* Terminal Section */}
+      <motion.section
+        id="terminal"
+        className="py-20 bg-white min-h-[80vh] flex flex-col items-center justify-center"
+        initial={{ opacity: 0, filter: 'blur(12px)' }}
+        whileInView={{ opacity: 1, filter: 'blur(0px)' }}
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+        viewport={{ once: true }}
+      >
+        <div className="w-full max-w-6xl mx-auto px-4 flex flex-col items-center">
+          <motion.h2
+            className="text-4xl md:text-6xl font-bold text-black text-center mb-4"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            {t('terminal.title')}
+          </motion.h2>
+          <motion.p
+            className="text-lg text-gray-600 text-center mb-12 max-w-2xl"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            {t('terminal.subtitle')}
+          </motion.p>
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.8, ease: 'backOut' }}
+            viewport={{ once: true }}
+            className="w-full"
+          >
+            <InteractiveTerminal />
+          </motion.div>
+        </div>
+      </motion.section>
 
       {/* Skills Section */}
       <motion.section

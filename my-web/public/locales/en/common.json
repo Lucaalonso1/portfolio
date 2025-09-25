@@ -3,6 +3,7 @@
     "home": "Home",
     "projects": "Projects",
     "skills": "Skills",
+    "terminal": "Terminal",
     "contact": "Contact"
   },
   "hero": {
@@ -29,6 +30,10 @@
   },
   "skills": {
     "title": "Skills"
+  },
+  "terminal": {
+    "title": "Interactive Terminal",
+    "subtitle": "Explore my portfolio from the command line. Type 'help' to get started."
   },
   "languageSelector": {
     "title": "Selecciona tu idioma",

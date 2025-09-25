@@ -1,15 +1,15 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, ReactElement } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface TerminalCommand {
   command: string;
-  output: string | JSX.Element;
+  output: string | ReactElement;
   delay?: number;
 }
 
 interface TerminalLine {
   type: 'command' | 'output' | 'prompt';
-  content: string | JSX.Element;
+  content: string | ReactElement;
   timestamp?: Date;
 }
 
@@ -340,7 +340,7 @@ Escribe 'whoami' para conocerme mejor.
     return 'text-green-400';
   };
 
-  const getOutputColor = (content: string | JSX.Element) => {
+  const getOutputColor = (content: string | ReactElement) => {
     if (typeof content === 'string' && content.includes('❌')) {
       return 'text-red-400';
     }

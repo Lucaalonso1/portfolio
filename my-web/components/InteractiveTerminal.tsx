@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
 
 interface TerminalCommand {
   command: string;
@@ -24,6 +24,7 @@ const InteractiveTerminal: React.FC = () => {
   const [currentDir] = useState('~/workspace');
   const terminalRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const isInView = useInView(terminalRef, { once: true, margin: "-100px" });
 
   const commands: Record<string, TerminalCommand> = {
     'help': {
@@ -216,12 +217,8 @@ Escribe 'whoami' para conocerme mejor.
 
     setLines(welcomeLines);
     
-    // Focus en el input
-    setTimeout(() => {
-      if (inputRef.current) {
-        inputRef.current.focus();
-      }
-    }, 1000);
+    // No hacer focus automático para evitar scroll no deseado
+    // El usuario puede hacer click en el terminal para activarlo
   }, []);
 
   useEffect(() => {
@@ -230,6 +227,18 @@ Escribe 'whoami' para conocerme mejor.
       terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
     }
   }, [lines]);
+
+  // Hacer focus solo cuando el terminal esté visible
+  useEffect(() => {
+    if (isInView && inputRef.current) {
+      // Pequeño delay para asegurar que la animación haya terminado
+      setTimeout(() => {
+        if (inputRef.current) {
+          inputRef.current.focus();
+        }
+      }, 500);
+    }
+  }, [isInView]);
 
   const executeCommand = (input: string) => {
     const trimmedInput = input.trim().toLowerCase();

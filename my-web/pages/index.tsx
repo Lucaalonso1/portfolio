@@ -49,6 +49,14 @@ export default function Home() {
   ];
 
   useEffect(() => {
+    // Prevenir el comportamiento de scroll restoration del navegador
+    if (typeof window !== 'undefined' && 'scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    
+    // Asegurar que la página comience desde arriba
+    window.scrollTo(0, 0);
+    
     // Actualizar fecha y hora inicialmente
     updateDateTime();
     

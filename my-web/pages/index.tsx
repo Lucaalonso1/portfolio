@@ -268,31 +268,31 @@ export default function Home() {
           </motion.div>
         }
       >
-        <div className="relative w-full h-full bg-[url('/wallpaper.jpg')] bg-cover bg-center rounded-[24px] flex items-center justify-center">
-          <div className="absolute top-0 w-full h-7 bg-black/20 backdrop-blur-md flex items-center px-4 rounded-t-[24px]">
-            <div className="flex space-x-2">
-              <div className="w-3 h-3 rounded-full bg-red-500" />
-              <div className="w-3 h-3 rounded-full bg-yellow-500" />
-              <div className="w-3 h-3 rounded-full bg-green-500" />
+        <div className="relative w-full h-full bg-[url('/wallpaper.jpg')] bg-cover bg-center rounded-[24px] flex items-center justify-center min-h-[600px] sm:min-h-[700px]">
+          <div className="absolute top-0 w-full h-6 sm:h-7 bg-black/20 backdrop-blur-md flex items-center px-3 sm:px-4 rounded-t-[24px]">
+            <div className="flex space-x-1.5 sm:space-x-2">
+              <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500" />
+              <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-500" />
+              <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500" />
             </div>
           </div>
           
-          <div className="absolute top-20 left-1/2 transform -translate-x-1/2 text-center text-white z-10">
+          <div className="absolute top-16 sm:top-20 left-1/2 transform -translate-x-1/2 text-center text-white z-10 w-full px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <div className="text-sm font-light mb-2 text-white/80">
+              <div className="text-xs sm:text-sm font-light mb-1 sm:mb-2 text-white/80">
                 {currentDate}
               </div>
-              <div className="text-4xl xs:text-5xl font-semibold tracking-tight text-white">
+              <div className="text-2xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-white">
                 {currentTime}
               </div>
             </motion.div>
           </div>
           
-          <div className="absolute top-32 xs:top-36 sm:top-40 right-1/2 transform translate-x-1/2 space-y-1.5 xs:space-y-2 w-full max-w-[450px] px-4 sm:px-0">
+          <div className="absolute top-28 sm:top-32 md:top-36 left-1/2 transform -translate-x-1/2 space-y-1 sm:space-y-1.5 w-full max-w-[320px] sm:max-w-[400px] md:max-w-[450px] px-4">
             <MacNotification
               title="Luca Alonso Froeling"
               message={t('hero.description')}

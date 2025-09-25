@@ -348,7 +348,7 @@ Escribe 'whoami' para conocerme mejor.
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto">
+    <div className="w-full max-w-4xl mx-auto px-2 sm:px-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -356,13 +356,13 @@ Escribe 'whoami' para conocerme mejor.
         className="bg-black/90 backdrop-blur-sm rounded-lg border border-gray-700 shadow-2xl overflow-hidden"
       >
         {/* Terminal Header */}
-        <div className="bg-gray-800 px-4 py-3 flex items-center justify-between border-b border-gray-700">
-          <div className="flex items-center space-x-2">
-            <div className="w-3 h-3 rounded-full bg-red-500"></div>
-            <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-            <div className="w-3 h-3 rounded-full bg-green-500"></div>
+        <div className="bg-gray-800 px-2 sm:px-4 py-2 sm:py-3 flex items-center justify-between border-b border-gray-700">
+          <div className="flex items-center space-x-1 sm:space-x-2">
+            <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-red-500"></div>
+            <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-yellow-500"></div>
+            <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-green-500"></div>
           </div>
-          <div className="text-gray-400 text-sm font-mono">
+          <div className="text-gray-400 text-xs sm:text-sm font-mono hidden sm:block">
             terminal@portfolio
           </div>
         </div>
@@ -370,7 +370,7 @@ Escribe 'whoami' para conocerme mejor.
         {/* Terminal Body */}
         <div 
           ref={terminalRef}
-          className="h-96 overflow-y-auto p-4 font-mono text-sm cursor-text"
+          className="h-80 sm:h-96 overflow-y-auto overflow-x-hidden p-2 sm:p-4 font-mono text-xs sm:text-sm cursor-text"
           onClick={() => {
             if (inputRef.current) {
               inputRef.current.focus();
@@ -384,15 +384,20 @@ Escribe 'whoami' para conocerme mejor.
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.2 }}
-                className="mb-1"
+                className="mb-1 break-words overflow-wrap-anywhere"
               >
                 {line.type === 'prompt' && (
-                  <div className={getPromptColor()}>
-                    {line.content}
+                  <div className={`${getPromptColor()} text-xs sm:text-sm break-all`}>
+                    {typeof line.content === 'string' ? (
+                      <>
+                        <span className="hidden sm:inline">{line.content}</span>
+                        <span className="sm:hidden">{line.content.replace('luca@portfolio:~/workspace', 'luca@portfolio:~')}</span>
+                      </>
+                    ) : line.content}
                   </div>
                 )}
                 {line.type === 'output' && (
-                  <div className={`${getOutputColor(line.content)} whitespace-pre-wrap`}>
+                  <div className={`${getOutputColor(line.content)} whitespace-pre-wrap text-xs sm:text-sm break-words`}>
                     {line.content}
                   </div>
                 )}
@@ -401,9 +406,10 @@ Escribe 'whoami' para conocerme mejor.
           </AnimatePresence>
 
           {/* Current Input Line */}
-          <div className="flex items-center">
-            <span className={getPromptColor()}>
-              {currentUser}@{currentHost}:{currentDir}$ 
+          <div className="flex items-start sm:items-center">
+            <span className={`${getPromptColor()} whitespace-nowrap text-xs sm:text-sm`}>
+              <span className="hidden sm:inline">{currentUser}@{currentHost}:{currentDir}$</span>
+              <span className="sm:hidden">luca@portfolio:~$</span>
             </span>
             <input
               ref={inputRef}
@@ -411,7 +417,7 @@ Escribe 'whoami' para conocerme mejor.
               value={currentInput}
               onChange={(e) => setCurrentInput(e.target.value)}
               onKeyDown={handleKeyDown}
-              className="bg-transparent text-gray-300 outline-none flex-1 ml-2 caret-green-400"
+              className="bg-transparent text-gray-300 outline-none flex-1 ml-1 sm:ml-2 caret-green-400 text-xs sm:text-sm min-w-0"
               placeholder=""
               disabled={isTyping}
               autoComplete="off"
@@ -421,7 +427,7 @@ Escribe 'whoami' para conocerme mejor.
               <motion.span
                 animate={{ opacity: [1, 0, 1] }}
                 transition={{ duration: 0.8, repeat: Infinity }}
-                className="text-green-400"
+                className="text-green-400 text-xs sm:text-sm"
               >
                 |
               </motion.span>

@@ -482,9 +482,9 @@ export default function Home() {
         transition={{ duration: 0.8, ease: 'easeOut' }}
         viewport={{ once: true }}
       >
-        <div className="w-full max-w-6xl mx-auto px-4 flex flex-col items-center">
+        <div className="w-full max-w-6xl mx-auto px-2 sm:px-4 flex flex-col items-center">
           <motion.h2
-            className="text-4xl md:text-6xl font-bold text-black text-center mb-4"
+            className="text-2xl sm:text-4xl md:text-6xl font-bold text-black text-center mb-4"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -493,7 +493,7 @@ export default function Home() {
             {t('terminal.title')}
           </motion.h2>
           <motion.p
-            className="text-lg text-gray-600 text-center mb-12 max-w-2xl"
+            className="text-sm sm:text-lg text-gray-600 text-center mb-8 sm:mb-12 max-w-2xl px-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}

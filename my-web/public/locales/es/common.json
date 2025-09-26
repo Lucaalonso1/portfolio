@@ -33,7 +33,54 @@
   },
   "terminal": {
     "title": "Terminal Interactivo",
-    "subtitle": "Explora mi portfolio desde la línea de comandos. Escribe 'help' para comenzar."
+    "subtitle": "Explora mi portfolio desde la línea de comandos. Escribe 'help' para comenzar.",
+    "welcome": "¡Bienvenido al terminal de Luca Alonso! 🚀\n\nEscribe 'help' para ver los comandos disponibles.\nEscribe 'whoami' para conocerme mejor.\n",
+    "commands": {
+      "help": {
+        "title": "Comandos disponibles:",
+        "list": "  whoami     - Información sobre mí\n  ls         - Listar proyectos\n  cat about.md - Leer mi biografía\n  skills     - Ver mis habilidades técnicas\n  projects   - Explorar mis proyectos\n  contact    - Información de contacto\n  clear      - Limpiar terminal\n  date       - Fecha y hora actual\n  echo       - Repetir mensaje\n  github     - Abrir mi GitHub\n  linkedin   - Abrir mi LinkedIn\n  resume     - Descargar mi CV\n  matrix     - Efecto Matrix\n  weather    - Clima actual\n  fortune    - Frase aleatoria motivacional\n  exit       - Salir del terminal"
+      },
+      "whoami": {
+        "title": "luca-alonso-froeling",
+        "content": "\n👋 ¡Hola! Soy Luca Alonso Froeling\n🎓 Estudiante de 2º año de Ciencias de la Computación\n💻 Desarrollador Full Stack apasionado\n🚀 Especializado en React, Next.js, Python y más\n🌍 Madrid, España\n🎯 Buscando oportunidades para crecer profesionalmente"
+      },
+      "ls": {
+        "title": "📁 Proyectos disponibles:",
+        "content": "  📂 7indoorgolf/     - Sistema de reservas de golf\n  📂 etg-website/     - Escuela técnica de golf\n  📂 portfolio/       - Este portfolio (¡actual!)\n  📂 university/      - Proyectos académicos\n  📂 experiments/     - Laboratorio de ideas\n  📂 open-source/     - Contribuciones a la comunidad"
+      },
+      "about": {
+        "title": "# Sobre Mí - Luca Alonso Froeling",
+        "content": "\n## 🎯 Mi Historia\nSoy un estudiante apasionado de Ciencias de la Computación con una \nfuerte base en desarrollo web moderno. Me encanta crear soluciones \ninnovadoras y aprender nuevas tecnologías constantemente.\n\n## 💼 Experiencia Profesional\n- Desarrollador Full Stack en proyectos reales\n- Especialista en React y Next.js\n- Experiencia con APIs y bases de datos\n- Trabajo con clientes reales y deadlines\n\n## 🎓 Educación\n- 2º año Ciencias de la Computación\n- Cursos especializados en desarrollo web\n- Certificaciones en tecnologías modernas\n\n## 🌟 Pasiones\n- Desarrollo de software innovador\n- Aprendizaje continuo\n- Contribuir a proyectos open source\n- Resolver problemas complejos"
+      },
+      "skills": {
+        "title": "🛠️  Mis Habilidades Técnicas:",
+        "content": "\nFrontend:\n  ⭐ React (95%)     ████████████████████\n  ⭐ Next.js (90%)   ████████████████████\n  ⭐ TypeScript (90%) ████████████████████\n  ⭐ JavaScript (95%) ████████████████████\n  ⭐ Tailwind CSS (90%) ████████████████████\n\nBackend:\n  ⭐ Node.js (85%)   ████████████████████\n  ⭐ Python (90%)    ████████████████████\n  ⭐ MongoDB (80%)   ████████████████████\n\nHerramientas:\n  ⭐ Git/GitHub (90%) ████████████████████\n  ⭐ Figma (85%)     ████████████████████\n  ⭐ Vercel (80%)    ████████████████████\n  ⭐ Framer Motion (80%) ████████████████████"
+      },
+      "projects": {
+        "title": "🚀 Mis Proyectos Destacados:",
+        "content": "\n1. 7 Indoor Golf (https://7indoorgolf.com/)\n   💻 Next.js + React + Tailwind CSS\n   🎯 Sistema de reservas completo\n   📱 Diseño responsivo y moderno\n\n2. ETG - Escuela Técnica de Golf\n   💻 React + Animaciones avanzadas\n   🎯 Sitio web profesional\n   📱 SEO optimizado\n\n3. Este Portfolio\n   💻 Next.js + TypeScript + Framer Motion\n   🎯 Terminal interactivo (¡actual!)\n   📱 Experiencia única de usuario"
+      },
+      "contact": {
+        "title": "📧 Información de Contacto:",
+        "content": "\n📧 Email: luca.alonso.froeling@gmail.com\n💼 LinkedIn: https://www.linkedin.com/in/luca-alonso-froeling-64a6a2306/\n🐙 GitHub: https://github.com/Lucaalonso1\n📍 Ubicación: Madrid, España\n🌐 Disponible para: Trabajos remotos y presenciales\n\n💡 ¿Quieres trabajar juntos? ¡Contáctame!"
+      },
+      "github": "🔗 Abriendo GitHub...",
+      "linkedin": "🔗 Abriendo LinkedIn...",
+      "matrix": "🌊 Iniciando efecto Matrix...",
+      "weather": {
+        "title": "🌤️  Clima en Madrid:",
+        "content": "   Temperatura: 22°C\n   Condición: Parcialmente nublado\n   Humedad: 65%\n   Viento: 10 km/h\n   \n   💡 Perfecto para programar ☕"
+      },
+      "fortune": {
+        "title": "🎲 Frase del día:",
+        "content": "   \n   \"El código limpio siempre parece que fue escrito por alguien \n    que se preocupa.\" - Robert C. Martin\n   \n   💡 ¡Mantén tu código limpio y organizado!"
+      },
+      "resume": "📄 Descargando CV...",
+      "resumeSuccess": "📄 CV descargado exitosamente!",
+      "exit": "👋 ¡Hasta luego! Gracias por visitar mi portfolio.",
+      "notFound": "❌ Comando no encontrado:",
+      "helpHint": "💡 Escribe 'help' para ver los comandos disponibles."
+    }
   },
   "languageSelector": {
     "title": "Selecciona tu idioma",

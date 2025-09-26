@@ -1,5 +1,7 @@
-import React, { useState, useEffect, useRef, ReactElement } from 'react';
+import React, { useState, useEffect, useRef, ReactElement, useMemo } from 'react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
+import { useTranslation } from 'next-i18next';
+import { useLanguage } from '@/hooks/useLanguage';
 
 interface TerminalCommand {
   command: string;
@@ -14,6 +16,8 @@ interface TerminalLine {
 }
 
 const InteractiveTerminal: React.FC = () => {
+  const { t } = useTranslation('common');
+  const { currentLanguage } = useLanguage();
   const [lines, setLines] = useState<TerminalLine[]>([]);
   const [currentInput, setCurrentInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
@@ -26,130 +30,38 @@ const InteractiveTerminal: React.FC = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const isInView = useInView(terminalRef, { once: true, margin: "-100px" });
 
-  const commands: Record<string, TerminalCommand> = {
+  const commands: Record<string, TerminalCommand> = useMemo(() => ({
     'help': {
       command: 'help',
-      output: `Comandos disponibles:
-  whoami     - Información sobre mí
-  ls         - Listar proyectos
-  cat about.md - Leer mi biografía
-  skills     - Ver mis habilidades técnicas
-  projects   - Explorar mis proyectos
-  contact    - Información de contacto
-  clear      - Limpiar terminal
-  date       - Fecha y hora actual
-  echo       - Repetir mensaje
-  github     - Abrir mi GitHub
-  linkedin   - Abrir mi LinkedIn
-  resume     - Descargar mi CV
-  matrix     - Efecto Matrix
-  weather    - Clima actual
-  fortune    - Frase aleatoria motivacional
-  exit       - Salir del terminal`
+      output: `${t('terminal.commands.help.title')}\n${t('terminal.commands.help.list')}`
     },
     'whoami': {
       command: 'whoami',
-      output: `luca-alonso-froeling
-
-👋 ¡Hola! Soy Luca Alonso Froeling
-🎓 Estudiante de 2º año de Ciencias de la Computación
-💻 Desarrollador Full Stack apasionado
-🚀 Especializado en React, Next.js, Python y más
-🌍 Madrid, España
-🎯 Buscando oportunidades para crecer profesionalmente`
+      output: `${t('terminal.commands.whoami.title')}${t('terminal.commands.whoami.content')}`
     },
     'ls': {
       command: 'ls',
-      output: `📁 Proyectos disponibles:
-  📂 7indoorgolf/     - Sistema de reservas de golf
-  📂 etg-website/     - Escuela técnica de golf
-  📂 portfolio/       - Este portfolio (¡actual!)
-  📂 university/      - Proyectos académicos
-  📂 experiments/     - Laboratorio de ideas
-  📂 open-source/     - Contribuciones a la comunidad`
+      output: `${t('terminal.commands.ls.title')}\n${t('terminal.commands.ls.content')}`
     },
     'cat about.md': {
       command: 'cat about.md',
-      output: `# Sobre Mí - Luca Alonso Froeling
-
-## 🎯 Mi Historia
-Soy un estudiante apasionado de Ciencias de la Computación con una 
-fuerte base en desarrollo web moderno. Me encanta crear soluciones 
-innovadoras y aprender nuevas tecnologías constantemente.
-
-## 💼 Experiencia Profesional
-- Desarrollador Full Stack en proyectos reales
-- Especialista en React y Next.js
-- Experiencia con APIs y bases de datos
-- Trabajo con clientes reales y deadlines
-
-## 🎓 Educación
-- 2º año Ciencias de la Computación
-- Cursos especializados en desarrollo web
-- Certificaciones en tecnologías modernas
-
-## 🌟 Pasiones
-- Desarrollo de software innovador
-- Aprendizaje continuo
-- Contribuir a proyectos open source
-- Resolver problemas complejos`
+      output: `${t('terminal.commands.about.title')}${t('terminal.commands.about.content')}`
     },
     'skills': {
       command: 'skills',
-      output: `🛠️  Mis Habilidades Técnicas:
-
-Frontend:
-  ⭐ React (95%)     ████████████████████
-  ⭐ Next.js (90%)   ████████████████████
-  ⭐ TypeScript (90%) ████████████████████
-  ⭐ JavaScript (95%) ████████████████████
-  ⭐ Tailwind CSS (90%) ████████████████████
-
-Backend:
-  ⭐ Node.js (85%)   ████████████████████
-  ⭐ Python (90%)    ████████████████████
-  ⭐ MongoDB (80%)   ████████████████████
-
-Herramientas:
-  ⭐ Git/GitHub (90%) ████████████████████
-  ⭐ Figma (85%)     ████████████████████
-  ⭐ Vercel (80%)    ████████████████████
-  ⭐ Framer Motion (80%) ████████████████████`
+      output: `${t('terminal.commands.skills.title')}${t('terminal.commands.skills.content')}`
     },
     'projects': {
       command: 'projects',
-      output: `🚀 Mis Proyectos Destacados:
-
-1. 7 Indoor Golf (https://7indoorgolf.com/)
-   💻 Next.js + React + Tailwind CSS
-   🎯 Sistema de reservas completo
-   📱 Diseño responsivo y moderno
-
-2. ETG - Escuela Técnica de Golf
-   💻 React + Animaciones avanzadas
-   🎯 Sitio web profesional
-   📱 SEO optimizado
-
-3. Este Portfolio
-   💻 Next.js + TypeScript + Framer Motion
-   🎯 Terminal interactivo (¡actual!)
-   📱 Experiencia única de usuario`
+      output: `${t('terminal.commands.projects.title')}${t('terminal.commands.projects.content')}`
     },
     'contact': {
       command: 'contact',
-      output: `📧 Información de Contacto:
-
-📧 Email: luca.alonso.froeling@gmail.com
-💼 LinkedIn: https://www.linkedin.com/in/luca-alonso-froeling-64a6a2306/
-🐙 GitHub: https://github.com/Lucaalonso1
-📍 Ubicación: Madrid, España
-🌐 Disponible para: Trabajos remotos y presenciales
-
-💡 ¿Quieres trabajar juntos? ¡Contáctame!`
+      output: `${t('terminal.commands.contact.title')}${t('terminal.commands.contact.content')}`
     },
     'date': {
       command: 'date',
-      output: new Date().toLocaleString('es-ES', {
+      output: new Date().toLocaleString(currentLanguage === 'en' ? 'en-US' : 'es-ES', {
         weekday: 'long',
         year: 'numeric',
         month: 'long',
@@ -161,53 +73,37 @@ Herramientas:
     },
     'github': {
       command: 'github',
-      output: '🔗 Abriendo GitHub...',
+      output: t('terminal.commands.github'),
       delay: 1000
     },
     'linkedin': {
       command: 'linkedin',
-      output: '🔗 Abriendo LinkedIn...',
+      output: t('terminal.commands.linkedin'),
       delay: 1000
     },
     'matrix': {
       command: 'matrix',
-      output: '🌊 Iniciando efecto Matrix...',
+      output: t('terminal.commands.matrix'),
       delay: 500
     },
     'weather': {
       command: 'weather',
-      output: `🌤️  Clima en Madrid:
-   Temperatura: 22°C
-   Condición: Parcialmente nublado
-   Humedad: 65%
-   Viento: 10 km/h
-   
-   💡 Perfecto para programar ☕`
+      output: `${t('terminal.commands.weather.title')}\n${t('terminal.commands.weather.content')}`
     },
     'fortune': {
       command: 'fortune',
-      output: `🎲 Frase del día:
-   
-   "El código limpio siempre parece que fue escrito por alguien 
-    que se preocupa." - Robert C. Martin
-   
-   💡 ¡Mantén tu código limpio y organizado!`
+      output: `${t('terminal.commands.fortune.title')}${t('terminal.commands.fortune.content')}`
     },
     'resume': {
       command: 'resume',
-      output: '📄 Descargando CV...',
+      output: t('terminal.commands.resume'),
       delay: 1000
     }
-  };
+  }), [t, currentLanguage]);
 
   useEffect(() => {
     // Mensaje de bienvenida inicial
-    const welcomeMessage = `¡Bienvenido al terminal de Luca Alonso! 🚀
-
-Escribe 'help' para ver los comandos disponibles.
-Escribe 'whoami' para conocerme mejor.
-
-`;
+    const welcomeMessage = t('terminal.welcome');
     
     const welcomeLines = welcomeMessage.split('\n').map(line => ({
       type: 'output' as const,
@@ -219,7 +115,7 @@ Escribe 'whoami' para conocerme mejor.
     
     // No hacer focus automático para evitar scroll no deseado
     // El usuario puede hacer click en el terminal para activarlo
-  }, []);
+  }, [t]);
 
   useEffect(() => {
     // Auto scroll al final
@@ -264,7 +160,7 @@ Escribe 'whoami' para conocerme mejor.
       } else if (trimmedInput === 'exit') {
         setLines(prev => [...prev, {
           type: 'output',
-          content: '👋 ¡Hasta luego! Gracias por visitar mi portfolio.',
+          content: t('terminal.commands.exit'),
           timestamp: new Date()
         }]);
       } else if (trimmedInput.startsWith('echo ')) {
@@ -293,7 +189,7 @@ Escribe 'whoami' para conocerme mejor.
           setTimeout(() => {
             setLines(prev => [...prev, {
               type: 'output',
-              content: '📄 CV descargado exitosamente!',
+              content: t('terminal.commands.resumeSuccess'),
               timestamp: new Date()
             }]);
           }, 1000);
@@ -301,8 +197,7 @@ Escribe 'whoami' para conocerme mejor.
       } else if (trimmedInput) {
         setLines(prev => [...prev, {
           type: 'output',
-          content: `❌ Comando no encontrado: ${input}
-💡 Escribe 'help' para ver los comandos disponibles.`,
+          content: `${t('terminal.commands.notFound')} ${input}\n${t('terminal.commands.helpHint')}`,
           timestamp: new Date()
         }]);
       }

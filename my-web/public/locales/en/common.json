@@ -33,7 +33,54 @@
   },
   "terminal": {
     "title": "Interactive Terminal",
-    "subtitle": "Explore my portfolio from the command line. Type 'help' to get started."
+    "subtitle": "Explore my portfolio from the command line. Type 'help' to get started.",
+    "welcome": "Welcome to Luca Alonso's terminal! 🚀\n\nType 'help' to see available commands.\nType 'whoami' to learn more about me.\n",
+    "commands": {
+      "help": {
+        "title": "Available commands:",
+        "list": "  whoami     - Information about me\n  ls         - List projects\n  cat about.md - Read my biography\n  skills     - View my technical skills\n  projects   - Explore my projects\n  contact    - Contact information\n  clear      - Clear terminal\n  date       - Current date and time\n  echo       - Repeat message\n  github     - Open my GitHub\n  linkedin   - Open my LinkedIn\n  resume     - Download my CV\n  matrix     - Matrix effect\n  weather    - Current weather\n  fortune    - Random motivational quote\n  exit       - Exit terminal"
+      },
+      "whoami": {
+        "title": "luca-alonso-froeling",
+        "content": "\n👋 Hello! I'm Luca Alonso Froeling\n🎓 Second-year Computer Science student\n💻 Passionate Full Stack Developer\n🚀 Specialized in React, Next.js, Python and more\n🌍 Madrid, Spain\n🎯 Looking for opportunities to grow professionally"
+      },
+      "ls": {
+        "title": "📁 Available projects:",
+        "content": "  📂 7indoorgolf/     - Golf booking system\n  📂 etg-website/     - Golf technical school\n  📂 portfolio/       - This portfolio (current!)\n  📂 university/      - Academic projects\n  📂 experiments/     - Ideas laboratory\n  📂 open-source/     - Community contributions"
+      },
+      "about": {
+        "title": "# About Me - Luca Alonso Froeling",
+        "content": "\n## 🎯 My Story\nI'm a passionate Computer Science student with a \nstrong foundation in modern web development. I love creating \ninnovative solutions and constantly learning new technologies.\n\n## 💼 Professional Experience\n- Full Stack Developer on real projects\n- React and Next.js specialist\n- Experience with APIs and databases\n- Working with real clients and deadlines\n\n## 🎓 Education\n- 2nd year Computer Science\n- Specialized web development courses\n- Modern technology certifications\n\n## 🌟 Passions\n- Innovative software development\n- Continuous learning\n- Contributing to open source projects\n- Solving complex problems"
+      },
+      "skills": {
+        "title": "🛠️  My Technical Skills:",
+        "content": "\nFrontend:\n  ⭐ React (95%)     ████████████████████\n  ⭐ Next.js (90%)   ████████████████████\n  ⭐ TypeScript (90%) ████████████████████\n  ⭐ JavaScript (95%) ████████████████████\n  ⭐ Tailwind CSS (90%) ████████████████████\n\nBackend:\n  ⭐ Node.js (85%)   ████████████████████\n  ⭐ Python (90%)    ████████████████████\n  ⭐ MongoDB (80%)   ████████████████████\n\nTools:\n  ⭐ Git/GitHub (90%) ████████████████████\n  ⭐ Figma (85%)     ████████████████████\n  ⭐ Vercel (80%)    ████████████████████\n  ⭐ Framer Motion (80%) ████████████████████"
+      },
+      "projects": {
+        "title": "🚀 My Featured Projects:",
+        "content": "\n1. 7 Indoor Golf (https://7indoorgolf.com/)\n   💻 Next.js + React + Tailwind CSS\n   🎯 Complete booking system\n   📱 Responsive and modern design\n\n2. ETG - Golf Technical School\n   💻 React + Advanced animations\n   🎯 Professional website\n   📱 SEO optimized\n\n3. This Portfolio\n   💻 Next.js + TypeScript + Framer Motion\n   🎯 Interactive terminal (current!)\n   📱 Unique user experience"
+      },
+      "contact": {
+        "title": "📧 Contact Information:",
+        "content": "\n📧 Email: luca.alonso.froeling@gmail.com\n💼 LinkedIn: https://www.linkedin.com/in/luca-alonso-froeling-64a6a2306/\n🐙 GitHub: https://github.com/Lucaalonso1\n📍 Location: Madrid, Spain\n🌐 Available for: Remote and on-site work\n\n💡 Want to work together? Contact me!"
+      },
+      "github": "🔗 Opening GitHub...",
+      "linkedin": "🔗 Opening LinkedIn...",
+      "matrix": "🌊 Starting Matrix effect...",
+      "weather": {
+        "title": "🌤️  Weather in Madrid:",
+        "content": "   Temperature: 22°C\n   Condition: Partly cloudy\n   Humidity: 65%\n   Wind: 10 km/h\n   \n   💡 Perfect for programming ☕"
+      },
+      "fortune": {
+        "title": "🎲 Quote of the day:",
+        "content": "   \n   \"Clean code always looks like it was written by someone \n    who cares.\" - Robert C. Martin\n   \n   💡 Keep your code clean and organized!"
+      },
+      "resume": "📄 Downloading CV...",
+      "resumeSuccess": "📄 CV downloaded successfully!",
+      "exit": "👋 See you later! Thanks for visiting my portfolio.",
+      "notFound": "❌ Command not found:",
+      "helpHint": "💡 Type 'help' to see available commands."
+    }
   },
   "languageSelector": {
     "title": "Selecciona tu idioma",

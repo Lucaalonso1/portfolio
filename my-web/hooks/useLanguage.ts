@@ -15,5 +15,7 @@ export const useLanguage = () => {
     // Ya no mostramos el selector automáticamente
   }, [router]);
 
-  return {};
+  return {
+    currentLanguage: router.locale || 'en'
+  };
 };

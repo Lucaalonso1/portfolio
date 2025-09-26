@@ -49,18 +49,14 @@ export default function Home() {
   ];
 
   useEffect(() => {
-    // Prevenir el comportamiento de scroll restoration del navegador
     if (typeof window !== 'undefined' && 'scrollRestoration' in window.history) {
       window.history.scrollRestoration = 'manual';
     }
     
-    // Asegurar que la página comience desde arriba
     window.scrollTo(0, 0);
     
-    // Actualizar fecha y hora inicialmente
     updateDateTime();
     
-    // Actualizar cada minuto
     const interval = setInterval(updateDateTime, 60000);
 
     const handleScroll = () => {
@@ -69,19 +65,17 @@ export default function Home() {
       const projectsSection = projectsRef.current;
       const windowHeight = window.innerHeight;
 
-      // Ajustamos el inicio de la transición para que comience más temprano
-      const start = windowHeight * 0.5; // Comienza a la mitad de la altura de la ventana
-      const end = projectsSection.offsetTop - windowHeight * 0.2; // Termina antes de llegar a proyectos
+      const start = windowHeight * 0.5;
+      const end = projectsSection.offsetTop - windowHeight * 0.2;
       const scrollY = window.scrollY;
 
-      // Progreso global de la cortina (0 = inicio temprano, 1 = antes de proyectos)
       let progress = (scrollY - start) / (end - start);
       progress = Math.min(Math.max(progress, 0), 1);
       setScrollProgress(progress);
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Calcular el progreso inicial
+    handleScroll();
 
     return () => {
       clearInterval(interval);
@@ -132,14 +126,14 @@ export default function Home() {
     const element = document.getElementById(sectionId);
     if (element) {
       const startPosition = window.pageYOffset;
-      const targetPosition = element.offsetTop - 80; // Ajuste para el navbar
-      smoothScroll(targetPosition, startPosition, 500); // 500ms = 0.5 segundos
+      const targetPosition = element.offsetTop - 80;
+      smoothScroll(targetPosition, startPosition, 500);
     }
   };
 
   const scrollToTop = () => {
     const startPosition = window.pageYOffset;
-    smoothScroll(0, startPosition, 500); // 500ms = 0.5 segundos
+    smoothScroll(0, startPosition, 500);
   };
 
   const handleContactMe = () => {

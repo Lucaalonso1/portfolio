@@ -29,9 +29,9 @@ export const MacNotification = ({ title, message, icon, link, delay, extended }:
       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm rounded-lg" />
       
       {/* Contenido sin blur */}
-      <div className="relative p-1.5 xs:p-2 sm:p-4">
-        <div className="flex gap-1.5 xs:gap-2 sm:gap-3">
-          <div className="relative w-5 h-5 xs:w-6 xs:h-6 sm:w-8 sm:h-8 flex-shrink-0">
+      <div className="relative p-2.5 xs:p-2 sm:p-4">
+        <div className="flex gap-2.5 xs:gap-2 sm:gap-3">
+          <div className="relative w-7 h-7 xs:w-6 xs:h-6 sm:w-8 sm:h-8 flex-shrink-0">
             <Image
               src={icon}
               alt={title}
@@ -41,10 +41,10 @@ export const MacNotification = ({ title, message, icon, link, delay, extended }:
           </div>
           <div className="min-w-0 flex-1">
             <div className="flex justify-between items-start">
-              <h3 className="font-semibold text-[11px] xs:text-[12px] sm:text-[14px] text-white font-inter drop-shadow-sm">{title}</h3>
-              <span className="text-[9px] xs:text-[10px] sm:text-xs text-gray-200 ml-1 xs:ml-2 font-inter drop-shadow-sm">ahora</span>
+              <h3 className="font-semibold text-[12px] xs:text-[12px] sm:text-[14px] text-white font-inter drop-shadow-sm">{title}</h3>
+              <span className="text-[10px] xs:text-[10px] sm:text-xs text-gray-200 ml-2 xs:ml-2 font-inter drop-shadow-sm">ahora</span>
             </div>
-            <p className={`text-[10px] xs:text-[11px] sm:text-[14px] text-gray-200 mt-0 ${extended ? 'leading-tight xs:leading-relaxed sm:leading-relaxed line-clamp-5 xs:line-clamp-6 sm:line-clamp-none' : 'truncate'} font-inter drop-shadow-sm`}>
+            <p className={`text-[11px] xs:text-[11px] sm:text-[14px] text-gray-200 mt-0.5 ${extended ? 'leading-snug xs:leading-relaxed sm:leading-relaxed line-clamp-3 xs:line-clamp-6 sm:line-clamp-none' : 'truncate'} font-inter drop-shadow-sm`}>
               {message}
             </p>
           </div>

@@ -9,7 +9,7 @@
   "hero": {
     "greeting": "Hola, soy",
     "name": "Luca Alonso",
-    "description": "Estudiante de segundo año de Ciencias de la Computación y Desarrollador de Software con experiencia profesional. Apasionado por crear soluciones innovadoras y aprender constantemente nuevas tecnologías.",
+    "description": "Estudiante de Desarrollo de Aplicaciones Web en ESIC. Con dos años de formación previa en Software Engineering, he desarrollado una sólida base técnica y experiencia práctica. Apasionado por crear soluciones innovadoras y aprender constantemente nuevas tecnologías.",
     "github": "GitHub",
     "githubMessage": "Echa un vistazo a mis proyectos en GitHub",
     "linkedin": "LinkedIn",
@@ -42,7 +42,7 @@
       },
       "whoami": {
         "title": "luca-alonso-froeling",
-        "content": "\n👋 ¡Hola! Soy Luca Alonso Froeling\n🎓 Estudiante de 2º año de Ciencias de la Computación\n💻 Desarrollador Full Stack apasionado\n🚀 Especializado en React, Next.js, Python y más\n🌍 Madrid, España\n🎯 Buscando oportunidades para crecer profesionalmente"
+        "content": "\n👋 ¡Hola! Soy Luca Alonso Froeling\n🎓 Estudiante de Desarrollo de Aplicaciones Web en ESIC\n📚 2 años de formación previa en Software Engineering\n💻 Desarrollador Full Stack apasionado\n🚀 Especializado en React, Next.js, Python y más\n🌍 Madrid, España\n🎯 Buscando oportunidades para crecer profesionalmente"
       },
       "ls": {
         "title": "📁 Proyectos disponibles:",
@@ -50,7 +50,7 @@
       },
       "about": {
         "title": "# Sobre Mí - Luca Alonso Froeling",
-        "content": "\n## 🎯 Mi Historia\nSoy un estudiante apasionado de Ciencias de la Computación con una \nfuerte base en desarrollo web moderno. Me encanta crear soluciones \ninnovadoras y aprender nuevas tecnologías constantemente.\n\n## 💼 Experiencia Profesional\n- Desarrollador Full Stack en proyectos reales\n- Especialista en React y Next.js\n- Experiencia con APIs y bases de datos\n- Trabajo con clientes reales y deadlines\n\n## 🎓 Educación\n- 2º año Ciencias de la Computación\n- Cursos especializados en desarrollo web\n- Certificaciones en tecnologías modernas\n\n## 🌟 Pasiones\n- Desarrollo de software innovador\n- Aprendizaje continuo\n- Contribuir a proyectos open source\n- Resolver problemas complejos"
+        "content": "\n## 🎯 Mi Historia\nSoy un estudiante apasionado de Desarrollo de Aplicaciones Web en ESIC \ncon una sólida formación técnica. Con dos años de estudio previo en \nSoftware Engineering, he adquirido una fuerte base en desarrollo web \nmoderno. Me encanta crear soluciones innovadoras y aprender nuevas \ntecnologías constantemente.\n\n## 💼 Experiencia Profesional\n- Desarrollador Full Stack en proyectos reales\n- Especialista en React y Next.js\n- Experiencia con APIs y bases de datos\n- Trabajo con clientes reales y deadlines\n\n## 🎓 Educación\n- Desarrollo de Aplicaciones Web - ESIC (Actualmente)\n- Software Engineering - 2 años de formación\n- Cursos especializados en desarrollo web\n- Certificaciones en tecnologías modernas\n\n## 🌟 Pasiones\n- Desarrollo de software innovador\n- Aprendizaje continuo\n- Contribuir a proyectos open source\n- Resolver problemas complejos"
       },
       "skills": {
         "title": "🛠️  Mis Habilidades Técnicas:",

@@ -9,7 +9,7 @@
   "hero": {
     "greeting": "Hi, I'm",
     "name": "Luca Alonso",
-    "description": "Second-year Computer Science student and Software Developer with professional experience. Passionate about creating innovative solutions and constantly learning new technologies.",
+    "description": "Web Application Development student at ESIC. With two years of prior training in Software Engineering, I've developed a strong technical foundation and practical experience. Passionate about creating innovative solutions and constantly learning new technologies.",
     "github": "GitHub",
     "githubMessage": "Check out my projects on GitHub",
     "linkedin": "LinkedIn",
@@ -42,7 +42,7 @@
       },
       "whoami": {
         "title": "luca-alonso-froeling",
-        "content": "\n👋 Hello! I'm Luca Alonso Froeling\n🎓 Second-year Computer Science student\n💻 Passionate Full Stack Developer\n🚀 Specialized in React, Next.js, Python and more\n🌍 Madrid, Spain\n🎯 Looking for opportunities to grow professionally"
+        "content": "\n👋 Hello! I'm Luca Alonso Froeling\n🎓 Web Application Development student at ESIC\n📚 2 years of prior training in Software Engineering\n💻 Passionate Full Stack Developer\n🚀 Specialized in React, Next.js, Python and more\n🌍 Madrid, Spain\n🎯 Looking for opportunities to grow professionally"
       },
       "ls": {
         "title": "📁 Available projects:",
@@ -50,7 +50,7 @@
       },
       "about": {
         "title": "# About Me - Luca Alonso Froeling",
-        "content": "\n## 🎯 My Story\nI'm a passionate Computer Science student with a \nstrong foundation in modern web development. I love creating \ninnovative solutions and constantly learning new technologies.\n\n## 💼 Professional Experience\n- Full Stack Developer on real projects\n- React and Next.js specialist\n- Experience with APIs and databases\n- Working with real clients and deadlines\n\n## 🎓 Education\n- 2nd year Computer Science\n- Specialized web development courses\n- Modern technology certifications\n\n## 🌟 Passions\n- Innovative software development\n- Continuous learning\n- Contributing to open source projects\n- Solving complex problems"
+        "content": "\n## 🎯 My Story\nI'm a passionate Web Application Development student at ESIC with \na solid technical background. With two years of prior study in \nSoftware Engineering, I've acquired a strong foundation in modern \nweb development. I love creating innovative solutions and constantly \nlearning new technologies.\n\n## 💼 Professional Experience\n- Full Stack Developer on real projects\n- React and Next.js specialist\n- Experience with APIs and databases\n- Working with real clients and deadlines\n\n## 🎓 Education\n- Web Application Development - ESIC (Currently)\n- Software Engineering - 2 years of training\n- Specialized web development courses\n- Modern technology certifications\n\n## 🌟 Passions\n- Innovative software development\n- Continuous learning\n- Contributing to open source projects\n- Solving complex problems"
       },
       "skills": {
         "title": "🛠️  My Technical Skills:",

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useTranslation } from 'next-i18next';
+import Image from 'next/image';
 
 interface WindowProps {
   id: string;
@@ -23,7 +23,6 @@ interface App {
 }
 
 const Window: React.FC<WindowProps> = ({
-  id,
   title,
   icon,
   children,
@@ -35,7 +34,7 @@ const Window: React.FC<WindowProps> = ({
   onFocus
 }) => {
   const [position, setPosition] = useState({ x: 100, y: 100 });
-  const [size, setSize] = useState({ width: 800, height: 600 });
+  const size = { width: 800, height: 600 };
   const [isDragging, setIsDragging] = useState(false);
   const windowRef = useRef<HTMLDivElement>(null);
 
@@ -109,7 +108,7 @@ const Window: React.FC<WindowProps> = ({
         </div>
         
         <div className="flex items-center space-x-2">
-          <img src={icon} alt={title} className="w-4 h-4" />
+          <Image src={icon} alt={title} width={16} height={16} />
           <span className="text-sm font-medium text-gray-700">{title}</span>
         </div>
         
@@ -146,7 +145,7 @@ const Dock: React.FC<{ apps: App[]; onAppClick: (app: App) => void; openApps: st
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
         >
-          <img src={app.icon} alt={app.name} className="w-full h-full object-cover" />
+          <Image src={app.icon} alt={app.name} width={48} height={48} className="object-cover" />
           {openApps.includes(app.id) && (
             <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-white rounded-full" />
           )}
@@ -157,7 +156,6 @@ const Dock: React.FC<{ apps: App[]; onAppClick: (app: App) => void; openApps: st
 };
 
 const MacOSSimulator: React.FC = () => {
-  const { t } = useTranslation('common');
   const [windows, setWindows] = useState<Array<{ id: string; app: App; isMaximized: boolean; zIndex: number }>>([]);
   const [nextZIndex, setNextZIndex] = useState(100);
   const [currentTime, setCurrentTime] = useState("");
@@ -250,11 +248,14 @@ const MacOSSimulator: React.FC = () => {
         <div className="p-8 h-full bg-gradient-to-br from-orange-50 to-red-100">
           <h1 className="text-3xl font-bold text-gray-800 mb-4">Escuela Técnica de Golf</h1>
           <div className="bg-white rounded-lg p-6 shadow-md mb-6">
-            <img 
-              src="/etg.jpg" 
-              alt="ETG" 
-              className="w-full h-64 object-cover rounded-lg mb-4"
-            />
+            <div className="w-full h-64 relative rounded-lg mb-4 overflow-hidden">
+              <Image 
+                src="/etg.jpg" 
+                alt="ETG" 
+                fill
+                className="object-cover"
+              />
+            </div>
             <h3 className="text-xl font-semibold mb-2">Proyecto Destacado</h3>
             <p className="text-gray-600 mb-4">
               Sitio web moderno para escuela de golf con animaciones fluidas y diseño responsive.

@@ -26,6 +26,10 @@
     "etg": {
       "title": "ETG - Escuela Técnica de Golf",
       "description": "Sitio web profesional para una prestigiosa escuela de golf mostrando sus servicios e instalaciones."
+    },
+    "ownstar": {
+      "title": "Ownstar Web",
+      "description": "Frontend completo para una marca de streetwear moderna. Diseño responsivo y animaciones fluidas utilizando las últimas tecnologías."
     }
   },
   "skills": {
@@ -46,7 +50,7 @@
       },
       "ls": {
         "title": "📁 Proyectos disponibles:",
-        "content": "  📂 7indoorgolf/     - Sistema de reservas de golf\n  📂 etg-website/     - Escuela técnica de golf\n  📂 portfolio/       - Este portfolio (¡actual!)\n  📂 university/      - Proyectos académicos\n  📂 experiments/     - Laboratorio de ideas\n  📂 open-source/     - Contribuciones a la comunidad"
+        "content": "  📂 7indoorgolf/     - Sistema de reservas de golf\n  📂 etg-website/     - Escuela técnica de golf\n  📂 ownstar-web/     - Marca de streetwear\n  📂 portfolio/       - Este portfolio (¡actual!)\n  📂 university/      - Proyectos académicos\n  📂 experiments/     - Laboratorio de ideas\n  📂 open-source/     - Contribuciones a la comunidad"
       },
       "about": {
         "title": "# Sobre Mí - Luca Alonso Froeling",
@@ -58,7 +62,7 @@
       },
       "projects": {
         "title": "🚀 Mis Proyectos Destacados:",
-        "content": "\n1. 7 Indoor Golf (https://7indoorgolf.com/)\n   💻 Next.js + React + Tailwind CSS\n   🎯 Sistema de reservas completo\n   📱 Diseño responsivo y moderno\n\n2. ETG - Escuela Técnica de Golf\n   💻 React + Animaciones avanzadas\n   🎯 Sitio web profesional\n   📱 SEO optimizado\n\n3. Este Portfolio\n   💻 Next.js + TypeScript + Framer Motion\n   🎯 Terminal interactivo (¡actual!)\n   📱 Experiencia única de usuario"
+        "content": "\n1. 7 Indoor Golf (https://7indoorgolf.com/)\n   💻 Next.js + React + Tailwind CSS\n   🎯 Sistema de reservas completo\n   📱 Diseño responsivo y moderno\n\n2. Ownstar Web (https://ownstar.es)\n   💻 Next.js + React + Tailwind CSS\n   🎯 E-commerce de moda urbana\n   📱 Frontend moderno y animaciones\n\n3. ETG - Escuela Técnica de Golf\n   💻 React + Animaciones avanzadas\n   🎯 Sitio web profesional\n   📱 SEO optimizado\n\n4. Este Portfolio\n   💻 Next.js + TypeScript + Framer Motion\n   🎯 Terminal interactivo (¡actual!)\n   📱 Experiencia única de usuario"
       },
       "contact": {
         "title": "📧 Información de Contacto:",

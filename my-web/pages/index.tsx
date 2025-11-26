@@ -360,7 +360,7 @@ export default function Home() {
           </motion.div>
 
           <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 gap-12"
+            className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
@@ -381,6 +381,13 @@ export default function Home() {
                 link: "https://7indoorgolf.com/"
               },
               {
+                title: t('projects.ownstar.title'),
+                description: t('projects.ownstar.description'),
+                tech: ["Next.js", "React", "Tailwind CSS", "Framer Motion"],
+                image: "/ownstar-web.png",
+                link: "https://ownstar.es"
+              },
+              {
                 title: t('projects.etg.title'),
                 description: t('projects.etg.description'),
                 tech: ["React", "Animation", "Responsive Design", "SEO Optimization"],
@@ -396,8 +403,8 @@ export default function Home() {
                 }}
                 className="relative"
               >
-                <CardContainer className="inter-var">
-                  <CardBody className="relative group/card hover:shadow-2xl hover:shadow-emerald-500/[0.1] bg-white border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border">
+                <CardContainer className="inter-var w-full">
+                  <CardBody className="relative group/card hover:shadow-2xl hover:shadow-emerald-500/[0.1] bg-white border-black/[0.1] w-auto h-auto rounded-xl p-6 border">
                     <CardItem
                       translateZ="50"
                       className="text-3xl font-bold text-black"

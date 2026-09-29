@@ -229,14 +229,9 @@ const MacOSSimulator: React.FC = () => {
               <li>• Optimización SEO completa</li>
             </ul>
           </div>
-          <a 
-            href="https://7indoorgolf.com/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="inline-block bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors"
-          >
-            Visitar Sitio Web
-          </a>
+          <p className="inline-block rounded-lg bg-gray-800 px-6 py-2 text-sm text-white">
+            Web cerrada
+          </p>
         </div>
       )
     },
@@ -326,7 +321,7 @@ const MacOSSimulator: React.FC = () => {
             <div className="mb-4 text-cyan-400">
               {`{
   "current_projects": [
-    "7indoorgolf.com",
+    "7 Indoor Golf",
     "escuelatecnicadegolf.com",
     "portfolio-website"
   ],

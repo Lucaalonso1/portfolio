@@ -1,221 +1,200 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Navbar, NavBody, NavItems } from "@/components/ui/resizable-navbar";
-import Link from 'next/link';
-import emailjs from '@emailjs/browser';
-import LanguageToggle from "@/components/LanguageToggle";
-import { useTranslation } from 'next-i18next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useState, type ChangeEvent, type FormEvent } from "react";
+import Head from "next/head";
+import { motion } from "framer-motion";
+import emailjs from "@emailjs/browser";
+import { useTranslation } from "next-i18next";
+import { GetStaticProps } from "next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { SiteNav } from "@/components/site/SiteNav";
+import { LINKS } from "@/components/site/links";
 
 export default function Contact() {
-  const { t } = useTranslation('common');
+  const { t } = useTranslation("common");
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    try {
-      const templateParams = {
-        from_name: formData.name,
-        from_email: formData.email,
-        subject: formData.subject,
-        message: formData.message,
-      };
 
+    try {
       await emailjs.send(
-        'service_45r88ri',
-        'template_9mac6pq',
-        templateParams,
-        'ANZFSwUsZ_7KJ7DAd'
+        "service_45r88ri",
+        "template_9mac6pq",
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        },
+        "ANZFSwUsZ_7KJ7DAd"
       );
 
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
+      setSubmitStatus("success");
+      setFormData({ name: "", email: "", subject: "", message: "" });
     } catch (err) {
-      console.error('Error sending message:', err);
-      setSubmitStatus('error');
+      console.error("Error sending message:", err);
+      setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }));
   };
 
-  const navItems = [
-    {
-      name: t('navigation.home'),
-      link: "/",
-      onClick: () => window.location.href = '/'
-    },
-    {
-      name: t('navigation.projects'),
-      link: "#projects",
-      onClick: () => window.location.href = '/#projects'
-    },
-    {
-      name: t('navigation.skills'),
-      link: "#skills",
-      onClick: () => window.location.href = '/#skills'
-    }
-  ];
+  const fieldClass =
+    "w-full rounded-xl border border-white/15 bg-white/10 px-4 py-3 text-white outline-none transition-colors placeholder:text-white/35 focus:border-white/60";
 
   return (
-    <div className="min-h-screen bg-white">
-      <Navbar>
-        <NavBody isLightHeader={true}>
-          <Link href="/" className="z-20 relative text-black">
-            <span className="font-bold text-black">Luca Alonso</span>
-          </Link>
-          <NavItems items={navItems} isLightHeader={true} />
-          <div className="z-20 relative flex items-center space-x-4">
-            <LanguageToggle isLightHeader={true} />
-          </div>
-        </NavBody>
-      </Navbar>
+    <>
+      <Head>
+        <title>{`${t("navigation.contact")} — Luca Alonso`}</title>
+        <meta name="description" content={t("contact.subtitle")} />
+      </Head>
+      <SiteNav />
+      <main className="min-h-screen px-4 pb-24 pt-28 md:px-8">
+        <div className="glass mx-auto max-w-5xl rounded-[32px] p-8 md:p-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <p className="text-sm font-medium text-white/60">{t("cta.kicker")}</p>
+            <h1 className="mt-3 max-w-3xl text-[clamp(2.8rem,6vw,4.5rem)] font-semibold leading-[1.05] tracking-[-0.03em]">
+              {t("contact.title")}
+            </h1>
+            <p className="mt-5 max-w-md text-lg leading-relaxed text-white/75">{t("contact.subtitle")}</p>
+          </motion.div>
 
-      <div className="max-w-4xl mx-auto px-4 py-20">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12"
-        >
-          <h1 className="text-4xl md:text-6xl font-bold text-black mb-4">{t('contact.title')}</h1>
-          <p className="text-gray-600 text-lg">
-            {t('contact.subtitle')}
-          </p>
-        </motion.div>
+          <div className="mt-16 grid gap-16 lg:grid-cols-12">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.05 }}
+              className="lg:col-span-4"
+            >
+              <a
+                href={`mailto:${LINKS.email}`}
+                className="inline-block text-lg text-white underline decoration-white/40 underline-offset-4"
+              >
+                {LINKS.email}
+              </a>
+              <div className="mt-6 flex gap-6 text-sm text-white/65">
+                <a href={LINKS.github} target="_blank" rel="noopener noreferrer" className="hover:text-white">
+                  GitHub
+                </a>
+                <a href={LINKS.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-white">
+                  LinkedIn
+                </a>
+              </div>
+            </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="bg-white rounded-2xl shadow-xl p-8"
-        >
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                  {t('contact.form.name')}
-                </label>
+            <motion.form
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              onSubmit={handleSubmit}
+              className="space-y-8 lg:col-span-8"
+            >
+            <div className="grid gap-8 md:grid-cols-2">
+              <label className="block">
+                <span className="mb-2 block text-xs font-medium text-white/60">
+                  {t("contact.form.name")}
+                </span>
                 <input
                   type="text"
-                  id="name"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-black"
-                  placeholder={t('contact.form.namePlaceholder')}
+                  placeholder={t("contact.form.namePlaceholder")}
+                  className={fieldClass}
                 />
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                  {t('contact.form.email')}
-                </label>
+              </label>
+              <label className="block">
+                <span className="mb-2 block text-xs font-medium text-white/60">
+                  {t("contact.form.email")}
+                </span>
                 <input
                   type="email"
-                  id="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-black"
-                  placeholder={t('contact.form.emailPlaceholder')}
+                  placeholder={t("contact.form.emailPlaceholder")}
+                  className={fieldClass}
                 />
-              </div>
+              </label>
             </div>
 
-            <div>
-              <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
-                {t('contact.form.subject')}
-              </label>
+            <label className="block">
+              <span className="mb-2 block text-xs font-medium text-white/60">
+                {t("contact.form.subject")}
+              </span>
               <input
                 type="text"
-                id="subject"
                 name="subject"
                 value={formData.subject}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-black"
-                placeholder={t('contact.form.subjectPlaceholder')}
+                placeholder={t("contact.form.subjectPlaceholder")}
+                className={fieldClass}
               />
-            </div>
+            </label>
 
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                {t('contact.form.message')}
-              </label>
+            <label className="block">
+              <span className="mb-2 block text-xs font-medium text-white/60">
+                {t("contact.form.message")}
+              </span>
               <textarea
-                id="message"
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
                 required
                 rows={6}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none text-black"
-                placeholder={t('contact.form.messagePlaceholder')}
+                placeholder={t("contact.form.messagePlaceholder")}
+                className={`${fieldClass} resize-none`}
               />
-            </div>
+            </label>
 
-            <div className="flex justify-end">
+            <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`px-8 py-3 rounded-lg text-white font-medium transition-all ${
-                  isSubmitting
-                    ? 'bg-gray-400 cursor-not-allowed'
-                    : 'bg-black hover:bg-gray-800'
-                }`}
+                className="rounded-full bg-white px-7 py-3 text-sm font-medium text-black transition-transform hover:scale-[1.03] disabled:cursor-not-allowed disabled:opacity-50"
               >
-                {isSubmitting ? t('contact.form.submitting') : t('contact.form.submit')}
+                {isSubmitting ? t("contact.form.submitting") : t("contact.form.submit")}
               </button>
+              {submitStatus === "success" && (
+                <p className="text-sm text-white">{t("contact.form.success")}</p>
+              )}
+              {submitStatus === "error" && (
+                <p className="text-sm text-red-400">{t("contact.form.error")}</p>
+              )}
             </div>
-
-            {submitStatus === 'success' && (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="text-green-600 text-center mt-4"
-              >
-                {t('contact.form.success')}
-              </motion.div>
-            )}
-
-            {submitStatus === 'error' && (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="text-red-600 text-center mt-4"
-              >
-                {t('contact.form.error')}
-              </motion.div>
-            )}
-          </form>
-        </motion.div>
-      </div>
-    </div>
+          </motion.form>
+        </div>
+        </div>
+      </main>
+    </>
   );
 }
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale ?? 'es', ['common'])),
+      ...(await serverSideTranslations(locale ?? "es", ["common"])),
     },
   };
-}; 
+};

@@ -35,12 +35,12 @@ const LanguageToggle: React.FC<LanguageToggleProps> = ({ isLightHeader = false, 
         onClick={() => setIsOpen(!isOpen)}
         className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-colors duration-300 ${
           isMobile 
-            ? 'w-full justify-between border border-yellow-400/30 bg-yellow-400/10' 
+            ? 'w-full justify-between border border-white/20 bg-white/10' 
             : ''
         } ${
           isLightHeader 
             ? 'text-black hover:bg-gray-100' 
-            : 'text-white hover:bg-gray-800'
+            : 'text-white hover:bg-white/10'
         }`}
       >
         <div className="flex items-center space-x-2">
@@ -71,7 +71,7 @@ const LanguageToggle: React.FC<LanguageToggleProps> = ({ isLightHeader = false, 
             className={`absolute top-full ${isMobile ? 'left-0 right-0' : 'right-0'} mt-2 ${isMobile ? 'w-full' : 'w-40'} rounded-lg shadow-lg border overflow-hidden z-50 ${
               isLightHeader 
                 ? 'bg-white border-gray-200' 
-                : 'bg-gray-800 border-gray-700'
+                : 'border-white/15 bg-black/80 text-white backdrop-blur-xl'
             }`}
           >
             <button
@@ -79,7 +79,7 @@ const LanguageToggle: React.FC<LanguageToggleProps> = ({ isLightHeader = false, 
               className={`w-full px-4 py-3 text-left transition-colors duration-200 flex items-center space-x-3 ${
                 router.locale === 'es' 
                   ? (isLightHeader ? 'bg-blue-50 text-blue-600' : 'bg-blue-900/30 text-blue-400')
-                  : (isLightHeader ? 'text-gray-700 hover:bg-gray-50' : 'text-gray-300 hover:bg-gray-700')
+                  : (isLightHeader ? 'text-gray-700 hover:bg-gray-50' : 'text-white/80 hover:bg-white/10')
               }`}
             >
               <span className="text-lg">🇪🇸</span>
@@ -90,7 +90,7 @@ const LanguageToggle: React.FC<LanguageToggleProps> = ({ isLightHeader = false, 
               className={`w-full px-4 py-3 text-left transition-colors duration-200 flex items-center space-x-3 ${
                 router.locale === 'en' 
                   ? (isLightHeader ? 'bg-blue-50 text-blue-600' : 'bg-blue-900/30 text-blue-400')
-                  : (isLightHeader ? 'text-gray-700 hover:bg-gray-50' : 'text-gray-300 hover:bg-gray-700')
+                  : (isLightHeader ? 'text-gray-700 hover:bg-gray-50' : 'text-white/80 hover:bg-white/10')
               }`}
             >
               <span className="text-lg">🇺🇸</span>

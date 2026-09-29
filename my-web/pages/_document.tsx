@@ -16,7 +16,9 @@ interface MyDocumentProps extends DocumentProps {
 export default function Document({ locale }: MyDocumentProps) {
   return (
     <Html lang={locale || config.i18n.defaultLocale}>
-      <Head />
+      <Head>
+        <meta name="theme-color" content="#3a2a28" />
+      </Head>
       <body className="antialiased">
         <Main />
         <NextScript />

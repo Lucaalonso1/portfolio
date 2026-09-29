@@ -1,7 +1,12 @@
 {
+  "meta": {
+    "title": "Luca Alonso — Desarrollador web",
+    "description": "Portfolio de Luca Alonso, desarrollador web en Madrid. Interfaces con carácter, hechas con React, Next.js y una base de ingeniería."
+  },
   "navigation": {
     "home": "Inicio",
     "projects": "Proyectos",
+    "about": "Sobre mí",
     "skills": "Habilidades",
     "terminal": "Terminal",
     "contact": "Contacto"
@@ -9,31 +14,64 @@
   "hero": {
     "greeting": "Hola, soy",
     "name": "Luca Alonso",
+    "role": "Desarrollador web",
+    "place": "Madrid, España",
+    "scroll": "Scroll",
+    "enter": "Desliza para entrar",
     "description": "Desarrollador Web, actualmente estudiando en ESIC. Con dos años estudiando Ingeniería Informática previamente, he desarrollado una sólida base técnica y experiencia práctica. Apasionado por crear soluciones innovadoras y aprender constantemente nuevas tecnologías.",
     "github": "GitHub",
     "githubMessage": "Echa un vistazo a mis proyectos en GitHub",
     "linkedin": "LinkedIn",
     "linkedinMessage": "Conéctate conmigo en LinkedIn"
   },
+  "manifesto": {
+    "text": "Diseño y desarrollo productos web que se sienten rápidos, claros y con carácter. Vengo de la ingeniería, estudio en ESIC y me obsesiona que cada interfaz tenga pulso, detalle y una razón de existir."
+  },
   "projects": {
+    "kicker": "Trabajo seleccionado",
     "title": "Mis trabajos recientes",
     "subtitle": "Mostrando mis últimos proyectos de desarrollo web. Cada uno representa un desafío único y una solución.",
-    "visitWebsite": "Visitar Sitio Web",
+    "visitWebsite": "Visitar sitio web",
+    "archived": "Web cerrada",
+    "archivedNote": "El sitio de este proyecto ya no está en línea.",
     "7indoorgolf": {
       "title": "7 Indoor Golf",
+      "role": "Reservas",
       "description": "Sitio web moderno para una instalación de golf indoor en Madrid con sistema de reservas y diseño responsivo."
     },
     "etg": {
-      "title": "ETG - Escuela Técnica de Golf",
+      "title": "ETG",
+      "role": "Escuela de golf",
       "description": "Sitio web profesional para una prestigiosa escuela de golf mostrando sus servicios e instalaciones."
     },
     "ownstar": {
-      "title": "Ownstar Web",
+      "title": "Ownstar",
+      "role": "Streetwear",
       "description": "Frontend completo para una marca de streetwear moderna. Diseño responsivo y animaciones fluidas utilizando las últimas tecnologías."
     }
   },
+  "about": {
+    "kicker": "Sobre mí",
+    "title": "De la ingeniería a la interfaz.",
+    "educationLabel": "Formación",
+    "educationValue": "Desarrollo de Aplicaciones Web en ESIC",
+    "baseLabel": "Base",
+    "baseValue": "Dos años de Ingeniería Informática",
+    "stackLabel": "Enfoque",
+    "stackValue": "React, Next.js, TypeScript y Python",
+    "placeLabel": "Desde",
+    "placeValue": "Madrid, en remoto o presencial"
+  },
   "skills": {
-    "title": "Habilidades"
+    "kicker": "Stack",
+    "title": "Habilidades",
+    "subtitle": "Las herramientas con las que construyo cada día."
+  },
+  "cta": {
+    "kicker": "Siguiente paso",
+    "title": "Hablemos.",
+    "text": "Si tienes un producto, una web o una idea a medias, escríbeme. Un mensaje basta.",
+    "button": "Escribir ahora"
   },
   "terminal": {
     "title": "Terminal Interactivo",
@@ -62,11 +100,11 @@
       },
       "projects": {
         "title": "🚀 Mis Proyectos Destacados:",
-        "content": "\n1. 7 Indoor Golf (https://7indoorgolf.com/)\n   💻 Next.js + React + Tailwind CSS\n   🎯 Sistema de reservas completo\n   📱 Diseño responsivo y moderno\n\n2. Ownstar Web (https://ownstar.es)\n   💻 Next.js + React + Tailwind CSS\n   🎯 E-commerce de moda urbana\n   📱 Frontend moderno y animaciones\n\n3. ETG - Escuela Técnica de Golf\n   💻 React + Animaciones avanzadas\n   🎯 Sitio web profesional\n   📱 SEO optimizado\n\n4. Este Portfolio\n   💻 Next.js + TypeScript + Framer Motion\n   🎯 Terminal interactivo (¡actual!)\n   📱 Experiencia única de usuario"
+        "content": "\n1. 7 Indoor Golf\n   💻 Next.js + React + Tailwind CSS\n   🎯 Sistema de reservas completo\n   📁 Web cerrada — el sitio ya no está en línea\n\n2. Ownstar\n   💻 Next.js + React + Tailwind CSS\n   🎯 E-commerce de moda urbana\n   📁 Web cerrada — el sitio ya no está en línea\n\n3. ETG - Escuela Técnica de Golf (https://www.escuelatecnicadegolf.com/)\n   💻 React + Animaciones avanzadas\n   🎯 Sitio web profesional\n   📱 SEO optimizado\n\n4. Este Portfolio\n   💻 Next.js + TypeScript + Framer Motion\n   🎯 Experiencia de scroll\n   📱 Interfaz editorial"
       },
       "contact": {
         "title": "📧 Información de Contacto:",
-        "content": "\n📧 Email: luca.alonso.froeling@gmail.com\n💼 LinkedIn: https://www.linkedin.com/in/luca-alonso-froeling-64a6a2306/\n🐙 GitHub: https://github.com/Lucaalonso1\n📍 Ubicación: Madrid, España\n🌐 Disponible para: Trabajos remotos y presenciales\n\n💡 ¿Quieres trabajar juntos? ¡Contáctame!"
+        "content": "\n📧 Email: luca.alonso2005@gmail.com\n💼 LinkedIn: https://www.linkedin.com/in/luca-alonso-froeling-64a6a2306/\n🐙 GitHub: https://github.com/Lucaalonso1\n📍 Ubicación: Madrid, España\n🌐 Disponible para: Trabajos remotos y presenciales\n\n💡 ¿Quieres trabajar juntos? ¡Contáctame!"
       },
       "github": "🔗 Abriendo GitHub...",
       "linkedin": "🔗 Abriendo LinkedIn...",

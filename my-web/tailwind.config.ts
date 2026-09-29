@@ -53,7 +53,11 @@ export default {
   				'3': 'hsl(var(--chart-3))',
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
-  			}
+  			},
+  			ink: '#070707',
+  			cream: '#efece4',
+  			mist: '#9a958c',
+  			acid: '#e4ff4a',
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
@@ -62,6 +66,8 @@ export default {
   		},
   		fontFamily: {
   			inter: ['Inter', 'sans-serif'],
+  			display: ['var(--font-display)', 'sans-serif'],
+  			body: ['var(--font-body)', 'sans-serif'],
   		},
   	}
   },

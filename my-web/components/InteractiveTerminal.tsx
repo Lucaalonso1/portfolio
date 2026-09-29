@@ -257,7 +257,7 @@ const InteractiveTerminal: React.FC = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="bg-black/90 backdrop-blur-sm rounded-lg border border-gray-700 shadow-2xl overflow-hidden"
+        className="overflow-hidden rounded-2xl border border-white/15 bg-black/75 shadow-2xl backdrop-blur-xl"
       >
         {/* Terminal Header */}
         <div className="bg-gray-800 px-2 sm:px-4 py-2 sm:py-3 flex items-center justify-between border-b border-gray-700">
@@ -274,6 +274,7 @@ const InteractiveTerminal: React.FC = () => {
         {/* Terminal Body */}
         <div 
           ref={terminalRef}
+          data-lenis-prevent
           className="h-80 sm:h-96 overflow-y-auto overflow-x-hidden p-2 sm:p-4 font-mono text-xs sm:text-sm cursor-text"
           onClick={() => {
             if (inputRef.current) {

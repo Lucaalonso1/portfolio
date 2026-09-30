@@ -16,10 +16,10 @@ export function TerminalBlock() {
           className="mb-8 text-center"
         >
           <p className="text-sm font-medium text-white/60">Terminal</p>
-          <h2 className="mt-3 text-4xl font-semibold tracking-[-0.03em] md:text-6xl">
+          <h2 className="mt-3 text-[2rem] font-semibold tracking-[-0.03em] sm:text-4xl md:text-6xl">
             {t("terminal.title")}
           </h2>
-          <p className="mx-auto mt-3 max-w-xl text-white/70">{t("terminal.subtitle")}</p>
+          <p className="mx-auto mt-3 max-w-xl px-1 text-sm text-white/70 sm:text-base">{t("terminal.subtitle")}</p>
         </motion.div>
         <InteractiveTerminal />
       </div>

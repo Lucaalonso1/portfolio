@@ -32,26 +32,26 @@ export function Skills() {
 
   return (
     <section id="skills" className="px-4 py-8 md:px-8 md:py-10">
-      <div className="glass mx-auto max-w-6xl rounded-[32px] p-8 md:p-12">
-        <div className="mb-12 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+      <div className="glass mx-auto max-w-6xl rounded-[24px] p-5 sm:rounded-[32px] sm:p-8 md:p-12">
+        <div className="mb-8 flex flex-col justify-between gap-4 sm:mb-12 md:flex-row md:items-end">
           <div>
             <p className="text-sm font-medium text-white/60">{t("skills.kicker")}</p>
-            <h2 className="mt-3 text-4xl font-semibold tracking-[-0.03em] md:text-6xl">
+            <h2 className="mt-3 text-[2rem] font-semibold tracking-[-0.03em] sm:text-4xl md:text-6xl">
               {t("skills.title")}
             </h2>
           </div>
-          <p className="max-w-sm text-white/70 md:text-right">{t("skills.subtitle")}</p>
+          <p className="max-w-sm text-sm text-white/70 sm:text-base md:text-right">{t("skills.subtitle")}</p>
         </div>
 
         <div className="grid gap-x-16 md:grid-cols-2">
           {SKILLS.map((skill, index) => (
-            <div key={skill.name} className="border-b border-white/10 py-4">
-              <div className="mb-3 flex items-center justify-between gap-4">
-                <div className="flex items-center gap-3">
-                  <skill.Icon size={16} color={skill.color} aria-hidden />
-                  <span className="text-base tracking-tight">{skill.name}</span>
+            <div key={skill.name} className="border-b border-white/10 py-3.5 sm:py-4">
+              <div className="mb-3 flex items-center justify-between gap-3">
+                <div className="flex min-w-0 items-center gap-3">
+                  <skill.Icon size={16} color={skill.color} aria-hidden className="shrink-0" />
+                  <span className="truncate text-sm tracking-tight sm:text-base">{skill.name}</span>
                 </div>
-                <span className="text-sm text-white/50">{skill.level}</span>
+                <span className="shrink-0 text-sm text-white/50">{skill.level}</span>
               </div>
               <div className="h-px bg-white/15">
                 <motion.div

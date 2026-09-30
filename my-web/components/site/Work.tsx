@@ -52,8 +52,8 @@ function ProjectSlide({
   const mediaX = useTransform(progress, [start, end], ["5%", "-5%"]);
 
   return (
-    <article className="flex w-full shrink-0 items-center px-4 py-20 md:px-8 lg:h-screen lg:w-screen lg:px-10 lg:py-8">
-      <div className="glass flex w-full flex-col justify-center gap-8 rounded-[32px] p-6 md:p-10 lg:h-[calc(100vh-5.5rem)] lg:gap-8">
+    <article className="flex w-full shrink-0 items-center px-3 py-14 sm:px-4 sm:py-20 md:px-8 lg:h-screen lg:w-screen lg:px-10 lg:py-8">
+      <div className="glass flex w-full flex-col justify-center gap-6 rounded-[24px] p-5 sm:gap-8 sm:rounded-[32px] sm:p-6 md:p-10 lg:h-[calc(100vh-5.5rem)] lg:gap-8">
       <div className="flex items-center justify-between text-xs font-medium text-white/60">
         <span>{t("projects.kicker")}</span>
         <span>
@@ -62,13 +62,13 @@ function ProjectSlide({
         </span>
       </div>
 
-      <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-14">
+      <div className="grid items-center gap-6 sm:gap-8 lg:grid-cols-2 lg:gap-14">
         <div>
           <p className="text-sm font-medium text-white/60">{project.role}</p>
-          <h3 className="mt-2 text-[clamp(2.4rem,4.5vw,4.25rem)] font-semibold leading-[1.02] tracking-[-0.03em] text-white">
+          <h3 className="mt-2 text-[clamp(2rem,8vw,4.25rem)] font-semibold leading-[1.02] tracking-[-0.03em] text-white">
             {project.title}
           </h3>
-          <p className="mt-5 max-w-md text-base leading-relaxed text-white/75 md:text-lg">
+          <p className="mt-4 max-w-md text-[15px] leading-relaxed text-white/75 sm:mt-5 sm:text-base md:text-lg">
             {project.description}
           </p>
           <div className="mt-6 flex flex-wrap gap-2">

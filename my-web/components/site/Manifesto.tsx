@@ -34,8 +34,8 @@ export function Manifesto() {
   const words = t("manifesto.text").split(" ");
 
   return (
-    <section ref={ref} className="px-6 py-28 md:px-10 md:py-44">
-      <p className="mx-auto max-w-4xl text-[clamp(1.7rem,3.6vw,3.15rem)] font-semibold leading-[1.15] tracking-[-0.03em] text-white [text-shadow:0_2px_28px_rgba(0,0,0,0.65)]">
+    <section ref={ref} className="px-5 py-20 sm:px-6 sm:py-28 md:px-10 md:py-44">
+      <p className="mx-auto max-w-4xl text-[clamp(1.45rem,5.5vw,3.15rem)] font-semibold leading-[1.15] tracking-[-0.03em] text-white [text-shadow:0_2px_28px_rgba(0,0,0,0.65)]">
         {words.map((word, index) => (
           <ManifestoWord
             key={`${word}-${index}`}

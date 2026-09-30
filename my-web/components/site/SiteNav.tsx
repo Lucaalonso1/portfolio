@@ -171,9 +171,9 @@ export function SiteNav({ revealed = true }: { revealed?: boolean }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-40 bg-black/55 px-6 pt-28 backdrop-blur-2xl lg:hidden"
+            className="fixed inset-0 z-[45] bg-[rgb(12,10,9)] px-5 pt-28 sm:px-6 lg:hidden"
           >
-            <nav className="flex flex-col gap-2">
+            <nav className="flex max-h-[calc(100svh-7.5rem)] flex-col gap-1 overflow-y-auto pb-10">
               {links.map((link, index) => (
                 <motion.button
                   key={link.id}
@@ -182,7 +182,7 @@ export function SiteNav({ revealed = true }: { revealed?: boolean }) {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.05 * index, duration: 0.4 }}
                   onClick={() => goTo(link.id)}
-                  className="border-b border-white/15 py-4 text-left text-4xl font-semibold tracking-tight text-white"
+                  className="border-b border-white/15 py-4 text-left text-[2rem] font-semibold tracking-tight text-white sm:text-4xl"
                 >
                   {link.label}
                 </motion.button>
@@ -191,13 +191,15 @@ export function SiteNav({ revealed = true }: { revealed?: boolean }) {
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.25 }}
-                className="mt-6 flex items-center justify-between"
+                className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
               >
-                <LanguageToggle isMobile />
+                <div className="w-full sm:max-w-[14rem]">
+                  <LanguageToggle isMobile />
+                </div>
                 <Link
                   href="/contact"
                   onClick={() => setOpen(false)}
-                  className="rounded-full bg-white px-5 py-3 text-sm font-medium text-black"
+                  className="inline-flex w-full items-center justify-center rounded-full bg-white px-5 py-3 text-sm font-medium text-black sm:w-auto"
                 >
                   {t("navigation.contact")}
                 </Link>

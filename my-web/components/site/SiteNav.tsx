@@ -38,24 +38,48 @@ export function SiteNav({ revealed = true }: { revealed?: boolean }) {
       return;
     }
 
+    let accumulated = 0;
+    const HIDE_AFTER = 4;
+    const SHOW_AFTER = 4;
+
     const onScroll = () => {
       const y = lenis.scroll;
-      const goingDown = y > lastY.current + 8;
-      const goingUp = y < lastY.current - 8;
+      const delta = y - lastY.current;
+      lastY.current = y;
 
-      if (!open && goingDown && y > 72) {
-        if (!hiddenRef.current) {
-          hiddenRef.current = true;
-          setHidden(true);
-        }
-      } else if (goingUp || y < 40) {
+      if (open) {
+        accumulated = 0;
+        return;
+      }
+
+      // Always show near the top of the page
+      if (y < 40) {
+        accumulated = 0;
         if (hiddenRef.current) {
           hiddenRef.current = false;
           setHidden(false);
         }
+        return;
       }
 
-      lastY.current = y;
+      // Ignore tiny floating-point noise
+      if (Math.abs(delta) < 0.25) return;
+
+      // Reset accumulator when direction flips
+      if ((delta > 0 && accumulated < 0) || (delta < 0 && accumulated > 0)) {
+        accumulated = 0;
+      }
+      accumulated += delta;
+
+      if (accumulated > HIDE_AFTER && y > 48 && !hiddenRef.current) {
+        hiddenRef.current = true;
+        setHidden(true);
+        accumulated = 0;
+      } else if (accumulated < -SHOW_AFTER && hiddenRef.current) {
+        hiddenRef.current = false;
+        setHidden(false);
+        accumulated = 0;
+      }
     };
 
     lenis.on("scroll", onScroll);

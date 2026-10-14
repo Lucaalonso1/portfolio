@@ -143,16 +143,16 @@ export function Work() {
     target: pinRef,
     offset: ["start start", "end end"],
   });
-  const x = useTransform(scrollYProgress, [0, 1], ["0vw", "-200vw"]);
 
   const projects: Project[] = [
     {
-      title: t("projects.7indoorgolf.title"),
-      role: t("projects.7indoorgolf.role"),
-      description: t("projects.7indoorgolf.description"),
-      tech: ["Next.js", "React", "Tailwind", "Booking"],
-      media: "/7indoorgolf.mp4",
+      title: t("projects.santoCarWash.title"),
+      role: t("projects.santoCarWash.role"),
+      description: t("projects.santoCarWash.description"),
+      tech: ["Next.js", "React", "Tailwind", "Motion"],
+      media: "/santo-car-wash.mp4",
       kind: "video",
+      href: LINKS.santoCarWash,
     },
     {
       title: t("projects.ownstar.title"),
@@ -162,6 +162,14 @@ export function Work() {
       media: "/ownstar-web.png",
       kind: "image",
       href: LINKS.ownstar,
+    },
+    {
+      title: t("projects.7indoorgolf.title"),
+      role: t("projects.7indoorgolf.role"),
+      description: t("projects.7indoorgolf.description"),
+      tech: ["Next.js", "React", "Tailwind", "Booking"],
+      media: "/7indoorgolf.mp4",
+      kind: "video",
     },
     {
       title: t("projects.etg.title"),
@@ -174,11 +182,15 @@ export function Work() {
     },
   ];
 
+  const travelVw = (projects.length - 1) * 100;
+  const x = useTransform(scrollYProgress, [0, 1], ["0vw", `-${travelVw}vw`]);
+
   return (
     <section
       id="work"
       ref={pinRef}
-      className="work-pin relative h-auto lg:h-[calc(100vh+200vw)]"
+      style={{ ["--work-travel" as string]: `${travelVw}vw` }}
+      className="work-pin relative h-auto lg:h-[calc(100vh+var(--work-travel))]"
     >
       <div className="work-sticky relative lg:sticky lg:top-0 lg:h-screen lg:overflow-hidden">
         <motion.div

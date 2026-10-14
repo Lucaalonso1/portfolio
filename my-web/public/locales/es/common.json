@@ -34,6 +34,11 @@
     "visitWebsite": "Visitar sitio web",
     "archived": "Web cerrada",
     "archivedNote": "El sitio de este proyecto ya no está en línea.",
+    "santoCarWash": {
+      "title": "Santo Car Wash",
+      "role": "Lavado a domicilio",
+      "description": "Web para un servicio de lavado de coches a domicilio. Presentación visual, trabajos reales y reserva directa por WhatsApp."
+    },
     "7indoorgolf": {
       "title": "7 Indoor Golf",
       "role": "Reservas",
@@ -88,7 +93,7 @@
       },
       "ls": {
         "title": "📁 Proyectos disponibles:",
-        "content": "  📂 7indoorgolf/     - Sistema de reservas de golf\n  📂 etg-website/     - Escuela técnica de golf\n  📂 ownstar-web/     - Marca de streetwear\n  📂 portfolio/       - Este portfolio (¡actual!)\n  📂 university/      - Proyectos académicos\n  📂 experiments/     - Laboratorio de ideas\n  📂 open-source/     - Contribuciones a la comunidad"
+        "content": "  📂 santo-car-wash/  - Lavado de coches a domicilio\n  📂 ownstar-web/     - Marca de streetwear\n  📂 7indoorgolf/     - Sistema de reservas de golf\n  📂 etg-website/     - Escuela técnica de golf\n  📂 portfolio/       - Este portfolio (¡actual!)\n  📂 university/      - Proyectos académicos\n  📂 experiments/     - Laboratorio de ideas\n  📂 open-source/     - Contribuciones a la comunidad"
       },
       "about": {
         "title": "# Sobre Mí - Luca Alonso Froeling",
@@ -100,7 +105,7 @@
       },
       "projects": {
         "title": "🚀 Mis Proyectos Destacados:",
-        "content": "\n1. 7 Indoor Golf\n   💻 Next.js + React + Tailwind CSS\n   🎯 Sistema de reservas completo\n   📁 Web cerrada — el sitio ya no está en línea\n\n2. Ownstar\n   💻 Next.js + React + Tailwind CSS\n   🎯 E-commerce de moda urbana\n   📁 Web cerrada — el sitio ya no está en línea\n\n3. ETG - Escuela Técnica de Golf (https://www.escuelatecnicadegolf.com/)\n   💻 React + Animaciones avanzadas\n   🎯 Sitio web profesional\n   📱 SEO optimizado\n\n4. Este Portfolio\n   💻 Next.js + TypeScript + Framer Motion\n   🎯 Experiencia de scroll\n   📱 Interfaz editorial"
+        "content": "\n1. Santo Car Wash (https://santo-car-wash.vercel.app/)\n   💻 Next.js + React + Tailwind CSS\n   🎯 Lavado de coches a domicilio\n   📱 Reserva directa por WhatsApp\n\n2. Ownstar\n   💻 Next.js + React + Tailwind CSS\n   🎯 E-commerce de moda urbana\n   📁 Web cerrada — el sitio ya no está en línea\n\n3. 7 Indoor Golf\n   💻 Next.js + React + Tailwind CSS\n   🎯 Sistema de reservas completo\n   📁 Web cerrada — el sitio ya no está en línea\n\n4. ETG - Escuela Técnica de Golf (https://www.escuelatecnicadegolf.com/)\n   💻 React + Animaciones avanzadas\n   🎯 Sitio web profesional\n   📱 SEO optimizado\n\n5. Este Portfolio\n   💻 Next.js + TypeScript + Framer Motion\n   🎯 Experiencia de scroll\n   📱 Interfaz editorial"
       },
       "contact": {
         "title": "📧 Información de Contacto:",

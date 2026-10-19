@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Luca Alonso — Web developer",
-    "description": "Portfolio of Luca Alonso, a web developer in Madrid. Interfaces with character, built with React, Next.js and an engineering foundation."
+    "description": "Portfolio of Luca Alonso, a web developer in Madrid. Interfaces with character, built with React and Next.js."
   },
   "navigation": {
     "home": "Home",
@@ -18,14 +18,14 @@
     "place": "Madrid, Spain",
     "scroll": "Scroll",
     "enter": "Scroll to enter",
-    "description": "Web Developer student at ESIC. With two years of prior training in Software Engineering, I've developed a strong technical foundation and practical experience. Passionate about creating innovative solutions and constantly learning new technologies.",
+    "description": "Computer science student at ESIC and web developer. I've developed a strong technical foundation and practical experience. Passionate about creating innovative solutions and constantly learning new technologies.",
     "github": "GitHub",
     "githubMessage": "Check out my projects on GitHub",
     "linkedin": "LinkedIn",
     "linkedinMessage": "Connect with me on LinkedIn"
   },
   "manifesto": {
-    "text": "I design and build web products that feel fast, clear, and full of character. I come from engineering, I study at ESIC, and I care that every interface has pulse, detail, and a reason to exist."
+    "text": "I design and build web products that feel fast, clear, and full of character. I study computer science at ESIC, and I care that every interface has pulse, detail, and a reason to exist."
   },
   "projects": {
     "kicker": "Selected work",
@@ -62,13 +62,14 @@
   },
   "about": {
     "kicker": "About",
-    "title": "From engineering to interface.",
+    "title": "From code to interface.",
+    "body": "Computer science student at ESIC and web developer. I've developed a strong technical foundation and practical experience. Passionate about creating innovative solutions and constantly learning new technologies. Away from the screen I'm an athlete, and surfing is what defines me most.",
     "educationLabel": "Training",
     "educationValue": "Web Application Development at ESIC",
-    "baseLabel": "Foundation",
-    "baseValue": "Two years of Software Engineering",
     "stackLabel": "Focus",
     "stackValue": "React, Next.js, TypeScript and Python",
+    "toolsLabel": "Tools",
+    "toolsValue": "Git, Node.js, Figma and Vercel",
     "placeLabel": "Based in",
     "placeValue": "Madrid, remote or on-site"
   },
@@ -94,7 +95,7 @@
       },
       "whoami": {
         "title": "luca-alonso-froeling",
-        "content": "\n👋 Hello! I'm Luca Alonso Froeling\n🎓 Web Application Development student at ESIC\n📚 2 years of prior training in Software Engineering\n💻 Passionate Full Stack Developer\n🚀 Specialized in React, Next.js, Python and more\n🌍 Madrid, Spain\n🎯 Looking for opportunities to grow professionally"
+        "content": "\n👋 Hello! I'm Luca Alonso Froeling\n🎓 Computer science student at ESIC\n💻 Passionate Full Stack Developer\n🚀 Specialized in React, Next.js, Python and more\n🌍 Madrid, Spain\n🎯 Looking for opportunities to grow professionally"
       },
       "ls": {
         "title": "📁 Available projects:",
@@ -102,7 +103,7 @@
       },
       "about": {
         "title": "# About Me - Luca Alonso Froeling",
-        "content": "\n## 🎯 My Story\nI'm a passionate Web Application Development student at ESIC with \na solid technical background. With two years of prior study in \nSoftware Engineering, I've acquired a strong foundation in modern \nweb development. I love creating innovative solutions and constantly \nlearning new technologies.\n\n## 💼 Professional Experience\n- Full Stack Developer on real projects\n- React and Next.js specialist\n- Experience with APIs and databases\n- Working with real clients and deadlines\n\n## 🎓 Education\n- Web Application Development - ESIC (Currently)\n- Software Engineering - 2 years of training\n- Specialized web development courses\n- Modern technology certifications\n\n## 🌟 Passions\n- Innovative software development\n- Continuous learning\n- Contributing to open source projects\n- Solving complex problems"
+        "content": "\n## 🎯 My Story\nI'm a computer science student at ESIC, passionate about web \napplication development and with a solid technical background. \nI love creating innovative solutions and constantly learning \nnew technologies.\n\n## 💼 Professional Experience\n- Full Stack Developer on real projects\n- React and Next.js specialist\n- Experience with APIs and databases\n- Working with real clients and deadlines\n\n## 🎓 Education\n- Web Application Development - ESIC (Currently)\n- Specialized web development courses\n- Modern technology certifications\n\n## 🌟 Passions\n- Innovative software development\n- Continuous learning\n- Contributing to open source projects\n- Solving complex problems"
       },
       "skills": {
         "title": "🛠️  My Technical Skills:",

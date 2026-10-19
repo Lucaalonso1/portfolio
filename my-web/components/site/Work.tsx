@@ -47,41 +47,67 @@ function ProjectSlide({
   desktop: boolean;
 }) {
   const { t } = useTranslation("common");
-  const start = index / total;
-  const end = (index + 1) / total;
-  const mediaX = useTransform(progress, [start, end], ["5%", "-5%"]);
+  const start = index / Math.max(total - 1, 1);
+  const end = (index + 1) / Math.max(total - 1, 1);
+  const mediaX = useTransform(progress, [start, end], ["3%", "-3%"]);
 
   return (
-    <article className="flex w-full shrink-0 items-center px-3 py-14 sm:px-4 sm:py-20 md:px-8 lg:h-screen lg:w-screen lg:px-10 lg:py-8">
-      <div className="glass flex w-full flex-col justify-center gap-6 rounded-[24px] p-5 sm:gap-8 sm:rounded-[32px] sm:p-6 md:p-10 lg:h-[calc(100vh-5.5rem)] lg:gap-8">
-      <div className="flex items-center justify-between text-xs font-medium text-white/60">
-        <span>{t("projects.kicker")}</span>
-        <span>
-          <span className="text-white">{pad(index + 1)}</span>
-          <span> / {pad(total)}</span>
-        </span>
-      </div>
+    <article className="flex w-full shrink-0 items-center px-3 py-8 sm:px-4 sm:py-12 lg:h-screen lg:w-[50vw] lg:px-3 lg:py-8 xl:px-4">
+      <div className="glass flex w-full flex-col gap-4 rounded-[24px] p-4 sm:gap-5 sm:rounded-[28px] sm:p-5 lg:h-[calc(100vh-5.5rem)] lg:min-h-0 lg:p-6">
+        <div className="flex shrink-0 items-center justify-between text-xs font-medium text-white/60">
+          <span>{t("projects.kicker")}</span>
+          <span>
+            <span className="text-white">{pad(index + 1)}</span>
+            <span> / {pad(total)}</span>
+          </span>
+        </div>
 
-      <div className="grid items-center gap-6 sm:gap-8 lg:grid-cols-2 lg:gap-14">
-        <div>
+        <div className="relative h-[30vh] shrink-0 overflow-hidden rounded-[20px] border border-white/15 bg-black/20 sm:h-[34vh] lg:h-auto lg:min-h-0 lg:flex-1">
+          {project.kind === "video" ? (
+            <video
+              className="h-full w-full object-cover"
+              autoPlay
+              loop
+              muted
+              playsInline
+            >
+              <source src={project.media} type="video/mp4" />
+            </video>
+          ) : (
+            <motion.div
+              style={desktop ? { x: mediaX } : undefined}
+              className="absolute inset-[-4%]"
+            >
+              <Image
+                src={project.media}
+                alt={project.title}
+                fill
+                sizes="(min-width: 1024px) 46vw, 100vw"
+                className="object-cover object-top"
+              />
+            </motion.div>
+          )}
+        </div>
+
+        <div className="shrink-0">
           <p className="text-sm font-medium text-white/60">{project.role}</p>
-          <h3 className="mt-2 text-[clamp(2rem,8vw,4.25rem)] font-semibold leading-[1.02] tracking-[-0.03em] text-white">
+          <h3 className="mt-1 text-[clamp(1.75rem,2.5vw,2.75rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-white">
             {project.title}
           </h3>
-          <p className="mt-4 max-w-md text-[15px] leading-relaxed text-white/75 sm:mt-5 sm:text-base md:text-lg">
+          <p className="mt-2 line-clamp-2 max-w-md text-sm leading-relaxed text-white/75 sm:text-[15px]">
             {project.description}
           </p>
-          <div className="mt-6 flex flex-wrap gap-2">
+          <div className="mt-3 flex flex-wrap gap-1.5">
             {project.tech.map((item) => (
               <span
                 key={item}
-                className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs text-white/85"
+                className="rounded-full border border-white/20 bg-white/10 px-2.5 py-1 text-[11px] text-white/85"
               >
                 {item}
               </span>
             ))}
           </div>
-          <div className="mt-7">
+          <div className="mt-3.5">
             {project.href ? (
               <a
                 href={project.href}
@@ -97,39 +123,11 @@ function ProjectSlide({
             ) : (
               <div className="max-w-sm">
                 <p className="text-sm font-medium text-white">{t("projects.archived")}</p>
-                <p className="mt-1.5 text-sm leading-relaxed text-white/65">{t("projects.archivedNote")}</p>
+                <p className="mt-1 text-sm leading-relaxed text-white/65">{t("projects.archivedNote")}</p>
               </div>
             )}
           </div>
         </div>
-
-        <div className="relative h-[38vh] overflow-hidden rounded-3xl border border-white/15 bg-black/20 lg:h-[52vh]">
-          {project.kind === "video" ? (
-            <video
-              className="h-full w-full object-cover"
-              autoPlay
-              loop
-              muted
-              playsInline
-            >
-              <source src={project.media} type="video/mp4" />
-            </video>
-          ) : (
-            <motion.div
-              style={desktop ? { x: mediaX } : undefined}
-              className="absolute inset-[-6%] "
-            >
-              <Image
-                src={project.media}
-                alt={project.title}
-                fill
-                sizes="(min-width: 1024px) 46vw, 100vw"
-                className="object-cover object-top"
-              />
-            </motion.div>
-          )}
-        </div>
-      </div>
       </div>
     </article>
   );
@@ -191,15 +189,17 @@ export function Work() {
     },
   ];
 
-  const travelVw = (projects.length - 1) * 100;
+  const steps = Math.max(projects.length - 2, 0);
+  const travelVw = steps * 50;
+  const scrollVh = steps * 58;
   const x = useTransform(scrollYProgress, [0, 1], ["0vw", `-${travelVw}vw`]);
 
   return (
     <section
       id="work"
       ref={pinRef}
-      style={{ ["--work-travel" as string]: `${travelVw}vw` }}
-      className="work-pin relative h-auto lg:h-[calc(100vh+var(--work-travel))]"
+      style={{ ["--work-scroll" as string]: `${scrollVh}vh` }}
+      className="work-pin relative h-auto lg:h-[calc(100vh+var(--work-scroll))]"
     >
       <div className="work-sticky relative lg:sticky lg:top-0 lg:h-screen lg:overflow-hidden">
         <motion.div

@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "next-i18next";
+import { useSmoothScroll } from "@/components/site/SmoothScroll";
 import { FaNodeJs, FaPython, FaReact } from "react-icons/fa";
 import {
   SiFigma,
@@ -27,6 +29,67 @@ const SKILLS: { name: string; level: number; Icon: IconType; color: string }[] =
   { name: "Vercel", level: 80, Icon: SiVercel, color: "#efece4" },
 ];
 
+function SkillBar({ level, delay }: { level: number; delay: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [shown, setShown] = useState(false);
+  const lenis = useSmoothScroll();
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node || shown) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setShown(true);
+      return;
+    }
+
+    const reveal = () => setShown(true);
+
+    const inView = () => {
+      const rect = node.getBoundingClientRect();
+      const viewport = window.visualViewport?.height ?? window.innerHeight;
+      return rect.width > 0 && rect.top < viewport * 0.92 && rect.bottom > viewport * 0.08;
+    };
+
+    const onScroll = () => {
+      if (inView()) reveal();
+    };
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.visualViewport?.addEventListener("scroll", onScroll);
+    window.visualViewport?.addEventListener("resize", onScroll);
+    lenis?.on("scroll", onScroll);
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) reveal();
+      },
+      { threshold: [0, 0.25] },
+    );
+    observer.observe(node);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", onScroll);
+      window.visualViewport?.removeEventListener("scroll", onScroll);
+      window.visualViewport?.removeEventListener("resize", onScroll);
+      lenis?.off("scroll", onScroll);
+    };
+  }, [lenis, shown]);
+
+  return (
+    <div ref={ref} className="h-1 overflow-hidden rounded-full bg-white/20 sm:h-px sm:rounded-none">
+      <motion.div
+        className="h-full w-full origin-left bg-white"
+        initial={false}
+        animate={{ scaleX: shown ? level / 100 : 0 }}
+        transition={{ duration: shown ? 1.05 : 0, delay: shown ? delay : 0, ease: [0.16, 1, 0.3, 1] }}
+      />
+    </div>
+  );
+}
+
 export function Skills() {
   const { t } = useTranslation("common");
 
@@ -53,15 +116,7 @@ export function Skills() {
                 </div>
                 <span className="shrink-0 text-sm text-white/50">{skill.level}</span>
               </div>
-              <div className="h-px bg-white/15">
-                <motion.div
-                  className="h-px origin-left bg-white"
-                  initial={{ width: 0 }}
-                  whileInView={{ width: `${skill.level}%` }}
-                  transition={{ duration: 1.05, delay: (index % 2) * 0.08, ease: [0.16, 1, 0.3, 1] }}
-                  viewport={{ once: true, margin: "-60px" }}
-                />
-              </div>
+              <SkillBar level={skill.level} delay={(index % 2) * 0.08} />
             </div>
           ))}
         </div>

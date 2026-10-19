@@ -5,8 +5,8 @@ export function About() {
 
   const facts = [
     { label: t("about.educationLabel"), value: t("about.educationValue") },
-    { label: t("about.baseLabel"), value: t("about.baseValue") },
     { label: t("about.stackLabel"), value: t("about.stackValue") },
+    { label: t("about.toolsLabel"), value: t("about.toolsValue") },
     { label: t("about.placeLabel"), value: t("about.placeValue") },
   ];
 
@@ -22,7 +22,7 @@ export function About() {
 
         <div className="lg:col-span-8">
           <p className="max-w-3xl text-lg leading-snug text-white/90 sm:text-xl md:text-2xl md:leading-snug">
-            {t("hero.description")}
+            {t("about.body")}
           </p>
           <dl className="mt-8 grid gap-3 sm:mt-12 sm:grid-cols-2">
             {facts.map((fact) => (

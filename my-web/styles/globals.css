@@ -105,6 +105,10 @@ body {
     flex-direction: column !important;
     width: 100% !important;
   }
+
+  .work-track > * {
+    width: 100% !important;
+  }
 }
 
 @layer base {

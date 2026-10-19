@@ -34,6 +34,11 @@
     "visitWebsite": "Visitar sitio web",
     "archived": "Web cerrada",
     "archivedNote": "El sitio de este proyecto ya no está en línea.",
+    "tuttos": {
+      "title": "Tutto's",
+      "role": "Restaurante",
+      "description": "Web del restaurante Tutto's en Algete. Carta, menú del día, horario en directo y un sitio para quedar a comer y ver el partido."
+    },
     "santoCarWash": {
       "title": "Santo Car Wash",
       "role": "Lavado a domicilio",
@@ -93,7 +98,7 @@
       },
       "ls": {
         "title": "📁 Proyectos disponibles:",
-        "content": "  📂 santo-car-wash/  - Lavado de coches a domicilio\n  📂 ownstar-web/     - Marca de streetwear\n  📂 7indoorgolf/     - Sistema de reservas de golf\n  📂 etg-website/     - Escuela técnica de golf\n  📂 portfolio/       - Este portfolio (¡actual!)\n  📂 university/      - Proyectos académicos\n  📂 experiments/     - Laboratorio de ideas\n  📂 open-source/     - Contribuciones a la comunidad"
+        "content": "  📂 santo-car-wash/  - Lavado de coches a domicilio\n  📂 ownstar-web/     - Marca de streetwear\n  📂 tuttos/          - Restaurante en Algete\n  📂 7indoorgolf/     - Sistema de reservas de golf\n  📂 etg-website/     - Escuela técnica de golf\n  📂 portfolio/       - Este portfolio (¡actual!)\n  📂 university/      - Proyectos académicos\n  📂 experiments/     - Laboratorio de ideas\n  📂 open-source/     - Contribuciones a la comunidad"
       },
       "about": {
         "title": "# Sobre Mí - Luca Alonso Froeling",
@@ -105,7 +110,7 @@
       },
       "projects": {
         "title": "🚀 Mis Proyectos Destacados:",
-        "content": "\n1. Santo Car Wash (https://santo-car-wash.vercel.app/)\n   💻 Next.js + React + Tailwind CSS\n   🎯 Lavado de coches a domicilio\n   📱 Reserva directa por WhatsApp\n\n2. Ownstar\n   💻 Next.js + React + Tailwind CSS\n   🎯 E-commerce de moda urbana\n   📁 Web cerrada — el sitio ya no está en línea\n\n3. 7 Indoor Golf\n   💻 Next.js + React + Tailwind CSS\n   🎯 Sistema de reservas completo\n   📁 Web cerrada — el sitio ya no está en línea\n\n4. ETG - Escuela Técnica de Golf (https://www.escuelatecnicadegolf.com/)\n   💻 React + Animaciones avanzadas\n   🎯 Sitio web profesional\n   📱 SEO optimizado\n\n5. Este Portfolio\n   💻 Next.js + TypeScript + Framer Motion\n   🎯 Experiencia de scroll\n   📱 Interfaz editorial"
+        "content": "\n1. Santo Car Wash (https://santo-car-wash.vercel.app/)\n   💻 Next.js + React + Tailwind CSS\n   🎯 Lavado de coches a domicilio\n   📱 Reserva directa por WhatsApp\n\n2. Ownstar\n   💻 Next.js + React + Tailwind CSS\n   🎯 E-commerce de moda urbana\n   📁 Web cerrada — el sitio ya no está en línea\n\n3. Tutto's (https://tuttos-zeta.vercel.app/)\n   💻 Next.js + React + Tailwind CSS\n   🎯 Restaurante en Algete\n   📱 Carta, menú del día y horario\n\n4. 7 Indoor Golf\n   💻 Next.js + React + Tailwind CSS\n   🎯 Sistema de reservas completo\n   📁 Web cerrada — el sitio ya no está en línea\n\n5. ETG - Escuela Técnica de Golf (https://www.escuelatecnicadegolf.com/)\n   💻 React + Animaciones avanzadas\n   🎯 Sitio web profesional\n   📱 SEO optimizado\n\n6. Este Portfolio\n   💻 Next.js + TypeScript + Framer Motion\n   🎯 Experiencia de scroll\n   📱 Interfaz editorial"
       },
       "contact": {
         "title": "📧 Información de Contacto:",

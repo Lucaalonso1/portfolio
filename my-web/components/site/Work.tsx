@@ -164,6 +164,15 @@ export function Work() {
       href: LINKS.ownstar,
     },
     {
+      title: t("projects.tuttos.title"),
+      role: t("projects.tuttos.role"),
+      description: t("projects.tuttos.description"),
+      tech: ["Next.js", "React", "Tailwind", "Motion"],
+      media: "/tuttos.jpg",
+      kind: "image",
+      href: LINKS.tuttos,
+    },
+    {
       title: t("projects.7indoorgolf.title"),
       role: t("projects.7indoorgolf.role"),
       description: t("projects.7indoorgolf.description"),
